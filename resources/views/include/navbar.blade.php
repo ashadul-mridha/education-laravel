@@ -49,6 +49,75 @@ $route = Route::current()->getName();
             </ul>
         </li>
 
+        
+
+        <li class="nav-item has-treeview {{ $prefix == '/exam' ? 'menu-open' : '' }}">
+            <a href="#" class="nav-link">
+                <i class="nav-icon fa fa-medkit"></i>
+                <p style="color: #ffffff">
+                    Manage Exam
+                    <i class="fas fa-angle-left right"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('exam.list') }}"
+                        class="nav-link {{ $route == 'exam.list' ? 'active' : '' }}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Exam List</p>
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('exam_questions.list') }}"
+                        class="nav-link {{ $route == 'exam_questions.list' ? 'active' : '' }}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Exam Questions List</p>
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('exam_ques_ans.list') }}"
+                        class="nav-link {{ $route == 'exam_ques_ans.list' ? 'active' : '' }}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Exam Questions Answare List</p>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        
+
+        <li class="nav-item has-treeview {{ $prefix == '/previous/question' ? 'menu-open' : '' }}">
+            <a href="#" class="nav-link">
+                <i class="nav-icon fa fa-medkit"></i>
+                <p style="color: #ffffff">
+                    Previous Questions
+                    <i class="fas fa-angle-left right"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('pre_ques.list') }}"
+                        class="nav-link {{ $route == 'pre_ques.list' ? 'active' : '' }}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Previous Question List</p>
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('pre_ques_de.list') }}"
+                        class="nav-link {{ $route == 'pre_ques_de.list' ? 'active' : '' }}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Previous Question Details List</p>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
 
 
 

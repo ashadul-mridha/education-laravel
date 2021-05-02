@@ -12,8 +12,8 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ asset('assets/backend') }}/plugins/fontawesome-free/css/all.min.css">
     <!-- Ionicons -->
-    <link rel="stylesheet"
-        href="{{ asset('assets/backend') }}/https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    {{-- <link rel="stylesheet"
+        href="{{ asset('assets/backend') }}/https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"> --}}
     <!-- Tempusdominus Bbootstrap 4 -->
     <link rel="stylesheet"
         href="{{ asset('assets/backend') }}/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
@@ -338,10 +338,10 @@
     <!-- jQuery UI 1.11.4 -->
     <script src="{{ asset('assets/backend') }}/plugins/jquery-ui/jquery-ui.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-    <script>
+    {{-- <script>
         $.widget.bridge('uibutton', $.ui.button)
 
-    </script>
+    </script> --}}
     <!-- Bootstrap 4 -->
     <script src="{{ asset('assets/backend') }}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('assets/backend') }}/plugins/select2/select2.full.min.js"></script>
