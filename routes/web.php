@@ -69,44 +69,18 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/question/edit/{id}', 'ExamQuestionController@edit')->name('exam_questions.edit');
         Route::post('/question/update', 'ExamQuestionController@update')->name('exam_questions.update');
         Route::get('/question/delete/{id}', 'ExamQuestionController@delete')->name('exam_questions.delete');
+
+        //exam result
+        Route::get('/result/create', 'ExamResultController@create')->name('exam_result.create');
+        Route::post('/result/store', 'ExamResultController@store')->name('exam_result.store');
+        Route::get('/result/list', 'ExamResultController@list')->name('exam_result.list');
+        Route::get('/result/view/{id}', 'ExamResultController@view')->name('exam_result.view');
+        Route::get('/result/edit/{id}', 'ExamResultController@edit')->name('exam_result.edit');
+        Route::post('/result/update', 'ExamResultController@update')->name('exam_result.update');
+        Route::get('/result/delete/{id}', 'ExamResultController@delete')->name('exam_result.delete');
         
     });
 
-    // Route::prefix('/exam/question')->group(function () {
-
-    //     Route::get('/question/create', 'ExamQuestionController@create')->name('exam_questions.create');
-    //     Route::post('/question/store', 'ExamQuestionController@store')->name('exam_questions.store');
-    //     Route::get('/question/list', 'ExamQuestionController@list')->name('exam_questions.list');
-    //     Route::get('/question/view/{id}', 'ExamQuestionController@view')->name('exam_questions.view');
-    //     Route::get('/question/edit/{id}', 'ExamQuestionController@edit')->name('exam_questions.edit');
-    //     Route::post('/question/update', 'ExamQuestionController@update')->name('exam_questions.update');
-    //     Route::get('/question/delete/{id}', 'ExamQuestionController@delete')->name('exam_questions.delete');
-        
-    // });
-
-    Route::prefix('/exam/question/answare')->group(function () {
-
-        Route::get('/create', 'ExamQuestionAnswareController@create')->name('exam_ques_ans.create');
-        // Route::post('/store', 'ExamQuestionAnswareController@store')->name('exam_ques_ans.store');
-        Route::get('/list', 'ExamQuestionAnswareController@list')->name('exam_ques_ans.list');
-        // Route::get('/view/{id}', 'ExamQuestionAnswareController@view')->name('exam_ques_ans.view');
-        // Route::get('/edit/{id}', 'ExamQuestionAnswareController@edit')->name('exam_ques_ans.edit');
-        // Route::post('/update', 'ExamQuestionAnswareController@update')->name('exam_ques_ans.update');
-        // Route::get('/delete/{id}', 'ExamQuestionAnswareController@delete')->name('exam_ques_ans.delete');
-        
-    });
-
-    // Route::prefix('/previous/question/details')->group(function () {
-
-    //     Route::get('/details/create', 'QuestionDetailsController@create')->name('pre_ques_de.create');
-    //     Route::post('/details/store', 'QuestionDetailsController@store')->name('pre_ques_de.store');
-    //     Route::get('/details/list', 'QuestionDetailsController@list')->name('pre_ques_de.list');
-    //     Route::get('/details/view/{id}', 'QuestionDetailsController@view')->name('pre_ques_de.view');
-    //     Route::get('/details/edit/{id}', 'QuestionDetailsController@edit')->name('pre_ques_de.edit');
-    //     Route::post('/details/update', 'QuestionDetailsController@update')->name('pre_ques_de.update');
-    //     Route::get('/details/delete/{id}', 'QuestionDetailsController@delete')->name('pre_ques_de.delete');
-        
-    // });
 
     Route::prefix('/previous/question')->group(function () {
 
@@ -129,15 +103,61 @@ Route::group(['middleware' => 'auth'], function () {
         
     });
 
-    // Route::prefix('/contact')->group(function () {
+    Route::prefix('/profession')->group(function () {
 
-    //     Route::get('/view', 'ContactController@get_index')->name('contact.index');
-    //     Route::get('/data', 'ContactController@get_data')->name('contact.data');
-    //     Route::post('/store', 'ContactController@store')->name('contact.store');
-    //     Route::post('/update', 'ContactController@update')->name('contact.update');
-    //     Route::post('/delete', 'ContactController@delete')->name('contact.delete');
+        Route::get('create', 'ProfessionController@create')->name('profession.create');
+        Route::post('/store', 'ProfessionController@store')->name('profession.store');
+        Route::get('/list', 'ProfessionController@list')->name('profession.list');
+        Route::get('/view/{id}', 'ProfessionController@view')->name('profession.view');
+        Route::get('/edit/{id}', 'ProfessionController@edit')->name('profession.edit');
+        Route::post('/update', 'ProfessionController@update')->name('profession.update');
+        Route::get('/delete/{id}', 'ProfessionController@delete')->name('profession.delete');
         
-    // });
+    });
+
+    Route::prefix('/subscription')->group(function () {
+
+        Route::get('/create', 'SubscriptionController@create')->name('subscription.create');
+        Route::post('/store', 'SubscriptionController@store')->name('subscription.store');
+        Route::get('/list', 'SubscriptionController@list')->name('subscription.list');
+        Route::get('/view/{id}', 'SubscriptionController@view')->name('subscription.view');
+        Route::get('/edit/{id}', 'SubscriptionController@edit')->name('subscription.edit');
+        Route::post('/update', 'SubscriptionController@update')->name('subscription.update');
+        Route::get('/delete/{id}', 'SubscriptionController@delete')->name('subscription.delete');
+        
+    });
+
+    Route::prefix('/topices')->group(function () {
+
+        Route::get('/create', 'TopicesController@create')->name('topices.create');
+        Route::post('/store', 'TopicesController@store')->name('topices.store');
+        Route::get('/list', 'TopicesController@list')->name('topices.list');
+        Route::get('/view/{id}', 'TopicesController@view')->name('topices.view');
+        Route::get('/edit/{id}', 'TopicesController@edit')->name('topices.edit');
+        Route::post('/update', 'TopicesController@update')->name('topices.update');
+        Route::get('/delete/{id}', 'TopicesController@delete')->name('topices.delete');
+
+        Route::get('details/create', 'TopicesDetailsController@create')->name('top_de.create');
+        Route::post('details/store', 'TopicesDetailsController@store')->name('top_de.store');
+        Route::get('details/list', 'TopicesDetailsController@list')->name('top_de.list');
+        Route::get('details/view/{id}', 'TopicesDetailsController@view')->name('top_de.view');
+        Route::get('details/edit/{id}', 'TopicesDetailsController@edit')->name('top_de.edit');
+        Route::post('details/update', 'TopicesDetailsController@update')->name('top_de.update');
+        Route::get('details/delete/{id}', 'TopicesDetailsController@delete')->name('top_de.delete');
+        
+    });
+
+    Route::prefix('/about-us')->group(function () {
+
+        Route::get('/create', 'AboutUsController@create')->name('about_us.create');
+        Route::post('/store', 'AboutUsController@store')->name('about_us.store');
+        Route::get('/list', 'AboutUsController@list')->name('about_us.list');
+        Route::get('/view/{id}', 'AboutUsController@view')->name('about_us.view');
+        Route::get('/edit/{id}', 'AboutUsController@edit')->name('about_us.edit');
+        Route::post('/update', 'AboutUsController@update')->name('about_us.update');
+        Route::get('/delete/{id}', 'AboutUsController@delete')->name('about_us.delete');
+        
+    });
 
 
 

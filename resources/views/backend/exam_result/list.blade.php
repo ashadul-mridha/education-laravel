@@ -35,38 +35,36 @@
 
           <div class="card">
             <div class="card-header">
-              <h2 class="card-title">Contact List</h2>
-              {{-- <a href="{{route('user.create')}}"><h4 class="btn btn-sm btn-success float-right"><i class="fa fa-plus-circle">Add User</i></h4></a> --}}
+              <h2 class="card-title">Profession List</h2>
+              <a href="{{route('exam_result.create')}}"><h4 class="btn btn-sm btn-success float-right"><i class="fa fa-plus-circle">Add Exam Result</i></h4></a>
             </div>
             <!-- /.card-header -->
             <div class="card-body table-responsive">
               <table id="example1" class="table table-bordered table-striped table-hover">
                 <thead class="bg-info">
                 <tr>
+                  <th id="exam_start_date">User Name</th>
                   <th id="exam_title">Exam Title</th>
-                  <th id="exam_start_date">Start Date</th>
-                  <th id="exam_start_time">Start Time</th>
-                  <th id="exam_end_time">End Time</th>
-                  <th id="exam_description">Exam Description</th>
+                  <th id="exam_start_date">Mark</th>
+                  <th id="exam_start_time">Comment</th>
                   <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                  {{-- @foreach($exams as $row)
+                  @foreach($all_data as $row)
                 <tr>
 
-                  <td>{{$row->exam_title}}
-                  </td>
-                  <td>{{$row->exam_start_date}}</td>
-                  <td> {{$row->exam_start_time}}</td>
-                  <td> {{$row->exam_end_time}}</td>
-                  <td> {{$row->exam_description}}</td>
+                  <td>{{$row->user->name}}</td>
+                  <td>{{$row->exam->exam_title}}</td>
+                  <td> {{$row->mark}}</td>
+                  <td> {{$row->comment}}</td>
                   <td>
-                    <a href="{{ route('exam.edit',$row->id)}}" class="btn btn-sm btn-warning" href=""><i class="far fa-edit"></i>Edit</a>
-                    <a href="{{ route('exam.delete', $row->id)}}" class="btn btn-sm btn-danger" href=""><i class="fa fa-trash"></i>Delete</a>
+                    <a href="{{ route('exam_result.view',$row->id)}}" class="btn btn-sm btn-primary" href=""><i class="far fa-eye"></i>View</a>
+                    <a href="{{ route('exam_result.edit',$row->id)}}" class="btn btn-sm btn-warning" href=""><i class="far fa-edit"></i>Edit</a>
+                    <a href="{{ route('exam_result.delete', $row->id)}}" class="btn btn-sm btn-danger" href=""><i class="fa fa-trash"></i>Delete</a>
                   </td>
                 </tr>
-                @endforeach --}}
+                @endforeach
                 </tbody>
               </table>
             </div>
@@ -87,32 +85,10 @@
     </section>
     <!-- /.content -->
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
     <script>
-      $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': '{{csrf_token()}}'
-        }
-    });
+      $(document).ready(function(){
 
-    // function getrecodes(){
-
-        // $.get("/contact/view").success(function(data){
-        //     console.log(data)
-        // })
-
-        $.ajax({
-        type: "GET",
-        url: "/contact/view",
-        success: function (data) { 
-            console.log(data)
-
-    }
-});
-    // }
-
-    // getrecodes();
+      })
     </script>
 
 @endsection

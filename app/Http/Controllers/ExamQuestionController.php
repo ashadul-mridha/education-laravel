@@ -11,7 +11,7 @@ class ExamQuestionController extends Controller
     public function create(){
 
         $all_exam = Exam::all();
-        return view('backend.exam_question.create',compact('all_exam'));
+        return view('backend.exam_question.create',compact('all_exam','all_user'));
     }
 
     public function store(Request $request){

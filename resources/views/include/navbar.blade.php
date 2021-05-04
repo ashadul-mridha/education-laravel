@@ -79,10 +79,82 @@ $route = Route::current()->getName();
             </ul>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="{{ route('exam_ques_ans.list') }}"
-                        class="nav-link {{ $route == 'exam_ques_ans.list' ? 'active' : '' }}">
+                    <a href="{{ route('exam_result.list') }}"
+                        class="nav-link {{ $route == 'exam_result.list' ? 'active' : '' }}">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Exam Questions Answare List</p>
+                        <p>Exam Result List</p>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+
+        
+        <li class="nav-item has-treeview {{ $prefix == '/profession' ? 'menu-open' : '' }}">
+            <a href="#" class="nav-link">
+                <i class="nav-icon fa fa-h-square"></i>
+                <p style="color: #ffffff">
+                    Profession
+                    <i class="fas fa-angle-left right"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('profession.create') }}"
+                        class="nav-link {{ $route == 'profession.create' ? 'active' : '' }}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Profession List</p>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        {{-- subscription --}}
+        
+        <li class="nav-item has-treeview {{ $prefix == '/subscription' ? 'menu-open' : '' }}">
+            <a href="#" class="nav-link">
+                <i class="nav-icon fa fa-h-square"></i>
+                <p style="color: #ffffff">
+                    Subscription
+                    <i class="fas fa-angle-left right"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('subscription.list') }}"
+                        class="nav-link {{ $route == 'subscription.list' ? 'active' : '' }}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Subscription List</p>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        {{-- Topices --}}
+        
+        <li class="nav-item has-treeview {{ $prefix == '/topices' ? 'menu-open' : '' }}">
+            <a href="#" class="nav-link">
+                <i class="nav-icon fa fa-h-square"></i>
+                <p style="color: #ffffff">
+                    Subscription
+                    <i class="fas fa-angle-left right"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('topices.list') }}"
+                        class="nav-link {{ $route == 'topices.list' ? 'active' : '' }}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Topices List</p>
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('top_de.create') }}"
+                        class="nav-link {{ $route == 'top_de.create' ? 'active' : '' }}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Topices Details List</p>
                     </a>
                 </li>
             </ul>
@@ -118,6 +190,27 @@ $route = Route::current()->getName();
             </ul>
         </li>
 
+
+        {{-- subscription --}}
+        
+        <li class="nav-item has-treeview {{ $prefix == '/about-us' ? 'menu-open' : '' }}">
+            <a href="#" class="nav-link">
+                <i class="nav-icon fa fa-h-square"></i>
+                <p style="color: #ffffff">
+                    About Us
+                    <i class="fas fa-angle-left right"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('about_us.list') }}"
+                        class="nav-link {{ $route == 'about_us.list' ? 'active' : '' }}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>About Us List</p>
+                    </a>
+                </li>
+            </ul>
+        </li>
 
 
 
