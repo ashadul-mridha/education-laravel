@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\ExamQuestion;
 use App\Exam;
+use Toastr;
 
 class ExamQuestionController extends Controller
 {
     public function create(){
 
         $all_exam = Exam::all();
-        return view('backend.exam_question.create',compact('all_exam','all_user'));
+        return view('backend.exam_question.create',compact('all_exam'));
     }
 
     public function store(Request $request){
@@ -41,6 +42,8 @@ class ExamQuestionController extends Controller
         $data->exam_count_time = $request->exam_count_time;
         $data->created_by = $request->created_by;
         $data->save();
+
+        Toastr::info('Exam Question Added Successfully', 'Done', ["positionClass" => "toast-top-right"]);
 
         return redirect()->route('exam_questions.list');
     }
@@ -88,12 +91,16 @@ class ExamQuestionController extends Controller
         $data->updated_by = $request->updated_by;
         $data->save();
 
+        Toastr::info('Exam Question Update Successfully', 'Done', ["positionClass" => "toast-top-right"]);
+
         return redirect()->route('exam_questions.list');
     }
 
     public function delete($id){
         $data = ExamQuestion::findorfail($id);
         $data->delete();
+
+        Toastr::error('Exam Question Deleted Successfully', 'Done', ["positionClass" => "toast-top-right"]);
 
         return redirect()->route('exam_questions.list');
     }

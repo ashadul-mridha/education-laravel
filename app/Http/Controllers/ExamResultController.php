@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Exam;
 use App\User;
 use App\ExamResult;
+use Toastr;
 
 class ExamResultController extends Controller
 {
@@ -33,6 +34,8 @@ class ExamResultController extends Controller
         $data->comment = $request->comment;
         $data->created_by = $request->created_by;
         $data->save();
+
+        Toastr::info('Exam Result Added Successfully', 'Done', ["positionClass" => "toast-top-right"]);
 
         return redirect()->route('exam_result.list');
     }
@@ -73,12 +76,16 @@ class ExamResultController extends Controller
         $data->created_by = $request->created_by;
         $data->save();
 
+        Toastr::info('Exam Result Updated Successfully', 'Done', ["positionClass" => "toast-top-right"]);
+
         return redirect()->route('exam_result.list');
     }
 
     public function delete($id){
         $data = ExamQuestion::findorfail($id);
         $data->delete();
+        
+        Toastr::error('Exam Result Deleted Successfully', 'Done', ["positionClass" => "toast-top-right"]);
 
         return redirect()->route('exam_result.list');
     }

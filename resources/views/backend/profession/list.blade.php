@@ -12,7 +12,7 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#"></a></li>
+              <li class="breadcrumb-item"><a href="#">All Profession</a></li>
             
             </ol>
           </div><!-- /.col -->
@@ -36,7 +36,7 @@
           <div class="card">
             <div class="card-header">
               <h2 class="card-title">Profession List</h2>
-              <a href="{{route('profession.create')}}"><h4 class="btn btn-sm btn-success float-right"><i class="fa fa-plus-circle">Add Exam Result</i></h4></a>
+              <a href="{{route('profession.create')}}"><h4 class="btn btn-sm btn-success float-right"><i class="fa fa-plus-circle">Add Profession</i></h4></a>
             </div>
             <!-- /.card-header -->
             <div class="card-body table-responsive">
@@ -56,7 +56,9 @@
                 <tr>
 
                   <td>{{$row->title}}</td>
-                  <td>{{$row->img_path}}</td>
+                  <td>
+                    <img src="{{ asset('Public/Profession/Img').'/'.$row->img_path}}" width="80px" height="100px" alt="">
+                  </td>
                   <td> {{$row->profession_link}}</td>
                   <td> {{$row->start_date}}</td>
                   <td> {{$row->end_date}}</td>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\PreviousQuestionType;
+use Toastr;
 
 class PreviousQuestionTypeController extends Controller
 {
@@ -27,6 +28,8 @@ class PreviousQuestionTypeController extends Controller
         $data->question_year = $request->question_year;
         $data->created_by = $request->created_by;
         $data->save();
+
+        Toastr::info('Privious Question Added Successfully', 'Done', ["positionClass" => "toast-top-right"]);
 
         return redirect()->route('pre_ques.list');
     }
@@ -61,6 +64,7 @@ class PreviousQuestionTypeController extends Controller
         $data->updated_by = $request->updated_by;
         $data->save();
         
+        Toastr::info('Privious Question Updated Successfully', 'Done', ["positionClass" => "toast-top-right"]);
 
         return redirect()->route('pre_ques.list');
     }
@@ -68,6 +72,8 @@ class PreviousQuestionTypeController extends Controller
     public function delete($id){
         $data = PreviousQuestionType::findorfail($id);
         $data->delete();
+
+        Toastr::error('Privious Question  Deleted Successfully', 'Done', ["positionClass" => "toast-top-right"]);
 
         return redirect()->route('pre_ques.list');
     }

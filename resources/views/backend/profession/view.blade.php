@@ -49,7 +49,9 @@
                   </li>
 
                   <li class="list-group-item">
-                    <b>Image Path: </b> <a class="float-right">{{ $data->img_path }}</a>
+                    <b>Image Path: </b> <a class="float-right">
+                      <img src="{{ asset('Public/Profession/Img').'/'.$data->img_path}}" alt="profession Image" width="300px" height="400px">  
+                    </a>
                   </li>
                   <li class="list-group-item">
                     <b>Profession Link: </b> <a class="float-right">{{ $data->profession_link }}</a>

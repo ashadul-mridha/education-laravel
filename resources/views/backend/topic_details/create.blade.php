@@ -68,7 +68,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <label class="text-info" for="file">File</label>
-                        <input type="text" class="form-control" value="{{ old('file')}}" name="file">
+                        <input type="file" class="form-control" value="{{ old('file')}}" name="file">
                         @error('file')
                         <strong class="text-danger">{{ $message }} </strong>
                         @enderror  
@@ -78,7 +78,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <label class="text-info" for="video_path">Video Path</label>
-                        <input type="text" class="form-control" value="{{ old('video_path')}}" name="video_path" placeholder="Enter Video path:">
+                        <input type="file" class="form-control" value="{{ old('video_path')}}" name="video_path" placeholder="Enter Video path:">
                         @error('video_path')
                         <strong class="text-danger">{{ $message }} </strong>
                         @enderror  

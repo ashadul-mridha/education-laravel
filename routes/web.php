@@ -159,16 +159,27 @@ Route::group(['middleware' => 'auth'], function () {
         
     });
 
+    Route::prefix('/setting')->group(function(){
 
-
-
-
-
-
-
-    Route::prefix('/setting')->group(function () {
-
-        Route::get('/create', 'Admin\SettingController@create')->name('setting.create');
-        Route::post('/store', 'Admin\SettingController@store')->name('setting.store');
+        Route::get('/create', 'BasicInfoSettingController@create')->name('setting.create');
+        Route::post('/store', 'BasicInfoSettingController@store')->name('setting.store');
+        Route::get('/list', 'BasicInfoSettingController@list')->name('setting.list');
+        Route::get('/view/{id}', 'BasicInfoSettingController@view')->name('setting.view');
+        Route::get('/edit/{id}', 'BasicInfoSettingController@edit')->name('setting.edit');
+        Route::post('/update', 'BasicInfoSettingController@update')->name('setting.update');
+        Route::get('/delete/{id}', 'BasicInfoSettingController@delete')->name('setting.delete');
+        
     });
+
+
+
+
+
+
+
+    // Route::prefix('/setting')->group(function () {
+
+    //     Route::get('/create', 'Admin\SettingController@create')->name('setting.create');
+    //     Route::post('/store', 'Admin\SettingController@store')->name('setting.store');
+    // });
 });

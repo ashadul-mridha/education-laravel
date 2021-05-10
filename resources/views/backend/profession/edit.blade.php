@@ -40,7 +40,7 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-                <form action="{{ route('profession.data')}}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('profession.update')}}" method="POST" enctype="multipart/form-data">
                   @csrf
                   <div class="row">
                       <div class="col-md-12">
@@ -54,8 +54,11 @@
                   <br>
                   <div class="row">
                       <div class="col-md-12">
-                          <label class="text-info" for="img_path"> Image Path</label>
-                          <input type="text" class="form-control" value="{{ $data->img_path }}" name="img_path" placeholder="Enter Your Image Path:">
+                          <label class="text-info" for="img_path">Old Image</label>
+                          <img src="{{ asset('Public/Profession/Img').'/'.$data->img_path}}" alt="Old Profession Image" height="400px" width="300px">
+                          <br>
+                          <label for="img_path" class="text-info"> Upload Profession image</label>
+                          <input type="file" class="form-control" name="img_path">
                           @error('img_path')
                           <strong class="text-danger">{{ $message }} </strong>
                           @enderror  

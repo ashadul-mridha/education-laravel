@@ -136,7 +136,7 @@ $route = Route::current()->getName();
             <a href="#" class="nav-link">
                 <i class="nav-icon fa fa-h-square"></i>
                 <p style="color: #ffffff">
-                    Subscription
+                    Topices
                     <i class="fas fa-angle-left right"></i>
                 </p>
             </a>
@@ -229,13 +229,22 @@ $route = Route::current()->getName();
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
+                    <a href="{{ route('setting.list') }}"
+                        class="nav-link {{ $route == 'setting.list' ? 'active' : '' }}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Setting</p>
+                    </a>
+                </li>
+            </ul>
+            {{-- <ul class="nav nav-treeview">
+                <li class="nav-item">
                     <a href="{{ route('setting.create') }}"
                         class="nav-link {{ $route == 'setting.create' ? 'active' : '' }}">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Setting</p>
                     </a>
                 </li>
-            </ul>
+            </ul> --}}
         </li>
 
 

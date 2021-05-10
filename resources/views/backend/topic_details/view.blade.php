@@ -53,11 +53,17 @@
                   </li>
 
                   <li class="list-group-item">
-                    <b>File: </b> <a class="float-right">{{ $data->file }}</a>
+                    <b>File: </b> <a class="float-right">
+                    
+                      <iframe src="{{ asset('Public/topics/file').'/'. $data->file}}" frameborder="0">
+                      </iframe>
+                    </a>
                   </li>
                   
                   <li class="list-group-item">
-                    <b>Video Path: </b> <a class="float-right">{{ $data->video_path }}</a>
+                    <b>Video Path: </b> <a class="float-right">
+                      <iframe src="{{ asset('Public/topics/video_file/').'/'. $data->video_path}}" frameborder="0"></iframe>
+                    </a>
                   </li>
                   
                 </ul>

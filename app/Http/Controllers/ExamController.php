@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Exam;
+use Toastr;
 
 class ExamController extends Controller
 {
@@ -30,6 +31,9 @@ class ExamController extends Controller
         $exam->exam_description = $request->exam_description;
         $exam->created_by = $request->created_by;
         $exam->save();
+
+
+        Toastr::info('Exam Add Successful', 'Done', ["positionClass" => "toast-top-center"]);
 
         return redirect()->route('exam.list');
     }
@@ -67,6 +71,8 @@ class ExamController extends Controller
         $exam->exam_description = $request->exam_description;
         $exam->updated_by = $request->updated_by;
         $exam->save();
+        
+        Toastr::info('Exam Update Successfully', 'Done', ["positionClass" => "toast-top-right"]);
 
         return redirect()->route('exam.list');
     }
@@ -74,6 +80,8 @@ class ExamController extends Controller
     public function delete($id){
         $exam = Exam::findorfail($id);
         $exam->delete();
+
+        Toastr::error('Exam Delete Successful', 'Done', ["positionClass" => "toast-top-center"]);
 
         return redirect()->route('exam.list');
     }

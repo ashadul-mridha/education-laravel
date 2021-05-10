@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Subscription;
+use Toastr;
 
 class SubscriptionController extends Controller
 {
@@ -29,6 +30,8 @@ class SubscriptionController extends Controller
         $data->active = $request->active;
         $data->created_by = $request->created_by;
         $data->save();
+
+        Toastr::info(' Subscription Added Successfully', 'Done', ["positionClass" => "toast-top-right"]);
 
         return redirect()->route('subscription.list');
     }
@@ -65,6 +68,7 @@ class SubscriptionController extends Controller
         $data->active = $request->active;
         $data->created_by = $request->created_by;
         $data->save();
+        Toastr::info(' Subscription Updated Successfully', 'Done', ["positionClass" => "toast-top-right"]);
 
         return redirect()->route('subscription.list');
     }
@@ -72,6 +76,7 @@ class SubscriptionController extends Controller
     public function delete($id){
         $data = Subscription::findorfail($id);
         $data->delete();
+        Toastr::error(' Subscription Deleted Successfully', 'Done', ["positionClass" => "toast-top-right"]);
 
         return redirect()->route('subscription.list');
     }

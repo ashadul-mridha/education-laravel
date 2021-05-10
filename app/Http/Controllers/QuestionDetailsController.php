@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\QuestionDetails;
 use App\PreviousQuestionType;
 use DB;
+use Toastr;
 
 class QuestionDetailsController extends Controller
 {
@@ -50,6 +51,8 @@ class QuestionDetailsController extends Controller
 
 
         $data->save();
+
+        Toastr::info(' Question Details Added Successfully', 'Done', ["positionClass" => "toast-top-right"]);
 
         return redirect()->route('pre_ques_de.list');
     }
@@ -129,6 +132,8 @@ class QuestionDetailsController extends Controller
 
         $data->save();
 
+        Toastr::info(' Question Details Updated Successfully', 'Done', ["positionClass" => "toast-top-right"]);
+
         return redirect()->route('pre_ques_de.list');
     }
 
@@ -147,6 +152,8 @@ class QuestionDetailsController extends Controller
         }
 
         $data->delete();
+
+        Toastr::error(' Question Details Deleted Successfully', 'Done', ["positionClass" => "toast-top-right"]);
 
         return redirect()->route('pre_ques_de.list');
     }

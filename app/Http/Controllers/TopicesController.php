@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Topices;
+use Toastr;
 
 class TopicesController extends Controller
 {
@@ -28,6 +29,8 @@ class TopicesController extends Controller
         $data->topices_view = $request->topices_view;
         $data->created_by = $request->created_by;
         $data->save();
+
+        Toastr::info(' Topices Added Successfully', 'Done', ["positionClass" => "toast-top-right"]);
 
         return redirect()->route('topices.list');
     }
@@ -64,12 +67,16 @@ class TopicesController extends Controller
         $data->updated_by = $request->updated_by;
         $data->save();
 
+        Toastr::info(' Topices Updated Successfully', 'Done', ["positionClass" => "toast-top-right"]);
+
         return redirect()->route('topices.list');
     }
 
     public function delete($id){
         $data = Topices::findorfail($id);
         $data->delete();
+
+        Toastr::error(' Topices Deleted Successfully', 'Done', ["positionClass" => "toast-top-right"]);
 
         return redirect()->route('topices.list');
     }

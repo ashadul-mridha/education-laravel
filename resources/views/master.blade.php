@@ -58,6 +58,7 @@
     <link rel="stylesheet" href="{{ asset('assets/backend') }}/plugins/select2/css/select2.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.js"></script>
     <script src="{{ asset('assets/backend') }}/plugins/timepicker/jquery.timepicker.min.js"></script>
+   
 
     <style type="text/css">
         .select2-selection {
@@ -112,6 +113,7 @@
 
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css"> 
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -336,7 +338,10 @@
     @endif
 
     <!-- jQuery UI 1.11.4 -->
-    <script src="{{ asset('assets/backend') }}/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script src="{{ asset('assets/backend') }}/plugins/jquery-ui/jquery-ui.min.js"></script><!-- Tosster Js -->
+    <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+    {!! Toastr::message() !!}
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     {{-- <script>
         $.widget.bridge('uibutton', $.ui.button)
@@ -376,6 +381,8 @@
     <script src="{{ asset('assets/backend') }}/plugins/jquery-validation/additional-methods.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
     <script src="{{ asset('assets/backend') }}/plugins/select2/js/select2.full.min.js"></script>
+
+    
 
     <script>
         $(function() {

@@ -55,7 +55,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <label class="text-info" for="img_path"> Image Path</label>
-                        <input type="text" class="form-control" value="{{ old('img_path')}}" name="img_path" placeholder="Enter Your Image Path:">
+                        <input type="file" class="form-control"  name="img_path">
                         @error('img_path')
                         <strong class="text-danger">{{ $message }} </strong>
                         @enderror  

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\AboutUs;
 use DB;
+use Toastr;
 
 class AboutUsController extends Controller
 {
@@ -18,7 +19,6 @@ class AboutUsController extends Controller
         $request->validate([
             'description' => 'required',
             'title' => 'required',
-            'image' => 'required'
         ]);
 
         $data = new AboutUs();
@@ -38,6 +38,8 @@ class AboutUsController extends Controller
         $data->image = $image_file_name;
 
         $data->save();
+
+        Toastr::info('About Us Added Successfully', 'Done', ["positionClass" => "toast-top-right"]);
 
         return redirect()->route('about_us.list');
     }
@@ -63,7 +65,6 @@ class AboutUsController extends Controller
         $request->validate([
             'description' => 'required',
             'title' => 'required',
-            'image' => 'required'
         ]);
 
         $data = AboutUs::findorfail($request->id);
@@ -98,6 +99,7 @@ class AboutUsController extends Controller
 
 
         $data->save();
+        Toastr::info('About Us Updated Successfully', 'Done', ["positionClass" => "toast-top-right"]);
 
         return redirect()->route('about_us.list');
     }
@@ -111,6 +113,8 @@ class AboutUsController extends Controller
         }
 
         $data->delete();
+
+        Toastr::error('About Us Deleted Successfully', 'Done', ["positionClass" => "toast-top-right"]);
 
         return redirect()->route('about_us.list');
     }

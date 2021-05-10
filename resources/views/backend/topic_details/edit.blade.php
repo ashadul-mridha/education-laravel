@@ -67,8 +67,13 @@
 
                 <div class="row">
                     <div class="col-md-12">
-                        <label class="text-info" for="file">File</label>
-                        <input type="text" class="form-control" value="{{ $data->file }}" name="file">
+                        
+                        <label class="text-info" for="file">Old File</label>
+                        <iframe src="{{ asset('Public/topics/file').'/'.$data->file}}" frameborder="0"></iframe>
+                        <br>
+                        <label class="text-info" for="file">Upload File</label>
+                        <input type="file" class="form-control" name="file">
+                        {{-- (public_path('Public/topics/file').'/'.$data->file) --}}
                         @error('file')
                         <strong class="text-danger">{{ $message }} </strong>
                         @enderror  
@@ -77,8 +82,12 @@
                 <br>
                 <div class="row">
                     <div class="col-md-12">
-                        <label class="text-info" for="video_path">Video Path</label>
-                        <input type="text" class="form-control" value="{{ $data->video_path }}" name="video_path" placeholder="Enter Video path:">
+
+                      <label class="text-info" for="file">Old Video File</label>
+                      <iframe src="{{ asset('Public/topics/video_file').'/'.$data->video_path}}" frameborder="0"></iframe>
+                      <br>
+                        <label class="text-info" for="video_path">Upload Video Path</label>
+                        <input type="file" class="form-control"  name="video_path">
                         @error('video_path')
                         <strong class="text-danger">{{ $message }} </strong>
                         @enderror  
