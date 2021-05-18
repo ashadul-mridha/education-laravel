@@ -14,12 +14,12 @@ class NurseMiddleware
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
-    {
-        if (Auth::check() && Auth::user()->userType == 'nurse') {
-            return $next($request);
-        }else{
-            return redirect()->back();
-        }
-    }
+    // public function handle($request, Closure $next)
+    // {
+    //     if (Auth::check() && Auth::user()->userType == 'nurse') {
+    //         return $next($request);
+    //     }else{
+    //         return redirect()->back();
+    //     }
+    // }
 }

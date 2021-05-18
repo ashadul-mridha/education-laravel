@@ -5,7 +5,7 @@
 
     <div style="color: #35977D" class="admin_text">WELCOME!</div>
     <div>
-        <form method="POST" action="{{ route('login') }}" id="login-form">
+    <form method="POST" action="" id="login-form">
             @csrf
             <div class="form-group">
                 <input id="email" type="email" class="form-control" name="email" placeholder="Email">

@@ -9,10 +9,11 @@ use Toastr;
 
 class ExamQuestionController extends Controller
 {
-    public function create(){
+    public function create($id){
 
-        $all_exam = Exam::all();
-        return view('backend.exam_question.create',compact('all_exam'));
+        $exam = Exam::findorfail($id);
+        //  dd($exam);
+        return view('backend.exam_question.create',compact('exam'));
     }
 
     public function store(Request $request){

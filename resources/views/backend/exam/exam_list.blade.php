@@ -62,6 +62,8 @@
                   <td> {{$row->exam_end_time}}</td>
                   <td> {{$row->exam_description}}</td>
                   <td>
+                    {{-- {{route('exam_questions.create')}} --}}
+                    <a href=" {{route('exam_questions.create',$row->id)}} " class="btn btn-sm btn-primary" href=""><i class="far fa-eye"></i>Add Exam Question</a>
                     <a href="{{ route('exam.view',$row->id)}}" class="btn btn-sm btn-primary" href=""><i class="far fa-eye"></i>View</a>
                     <a href="{{ route('exam.edit',$row->id)}}" class="btn btn-sm btn-warning" href=""><i class="far fa-edit"></i>Edit</a>
                     <a href="{{ route('exam.delete', $row->id)}}" class="btn btn-sm btn-danger" href=""><i class="fa fa-trash"></i>Delete</a>

@@ -20,13 +20,16 @@
 Auth::routes();
 
 
-
-
-Route::get('/', function () {
-
-
-    return redirect('login');
+Route::get('/',function(){
+    return view('frontend.home');
 });
+
+Route::get('/login', function () {
+
+return view('auth.login');
+});
+
+
 
 
 
@@ -62,7 +65,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/delete/{id}', 'ExamController@delete')->name('exam.delete');
 
         //exam question
-        Route::get('/question/create', 'ExamQuestionController@create')->name('exam_questions.create');
+        Route::get('/question/create/{id}', 'ExamQuestionController@create')->name('exam_questions.create');
         Route::post('/question/store', 'ExamQuestionController@store')->name('exam_questions.store');
         Route::get('/question/list', 'ExamQuestionController@list')->name('exam_questions.list');
         Route::get('/question/view/{id}', 'ExamQuestionController@view')->name('exam_questions.view');

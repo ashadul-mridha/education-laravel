@@ -46,10 +46,11 @@
                     <div class="col-12 col-md-12">
                       <div class="form-group">
                         <label class="text-info">Select Exam</label>
+                        
                         <select name="exam_id" class="form-control select2 select2-info" data-dropdown-css-class="select2-info" style="width: 100%;">
-                            @foreach ($all_exam as $row)
-                                <option value="{{$row->id}}">{{$row->exam_title}} </option>
-                            @endforeach
+
+                                <option value="{{$exam->id}}">{{$exam->exam_title}} </option>
+                            
                         </select>
                       </div>
                       <!-- /.form-group -->
