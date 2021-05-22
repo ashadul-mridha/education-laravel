@@ -1,7 +1,7 @@
 @php
-
     $sl = 1;
 @endphp
+
 @extends('master')
 
 @section('content')
@@ -12,11 +12,11 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">{{ $exam->exam_title }} Exam Result</h1>
+            <h1 class="m-0 text-dark">All Exam Result</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{ route('all_exam_result.list')}}">All Exam Result</a></li>
+              <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
             
             </ol>
           </div><!-- /.col -->
@@ -39,53 +39,29 @@
 
           <div class="card">
             <div class="card-header">
-              <h2 class="card-title text-success h1">Exam Result</h2>
+              <h2 class="card-title">All Exam result</h2>
               <a href="{{route('exam_result.create')}}"><h4 class="btn btn-sm btn-success float-right"><i class="fa fa-plus-circle">Add Exam Result</i></h4></a>
             </div>
-
-            
-            <div class="card-header">
-              
-              <div class="row">
-                <div class="col-md-6 ">
-                  <h2 class="card-title text-primary">Exam Title : {{ $exam->exam_title }}</h2> <br> <br>
-                  <h2 class="card-title text-primary">Exam Date : {{ $exam->exam_start_date }}</h2>
-                </div>
-  
-                <div class="col-md-6">
-                  <h2 class="card-title text-primary float-right">Total Mark : 100</h2> <br> <br>
-                  <h2 class="card-title text-primary float-right">Highest Mark : {{ $top_mark }}</h2> <br> <br>
-                  <h2 class="card-title text-primary float-right">Lowest Mark : {{ $min_mark }}</h2>
-                </div> 
-              </div>
-              
-            </div>
-
             <!-- /.card-header -->
             <div class="card-body table-responsive">
               <table id="example1" class="table table-bordered table-striped table-hover">
                 <thead class="bg-info">
                 <tr>
-                  
-                  <th id="exam_start_date">Position</th>
-                  <th id="exam_start_date">User Name</th>
-                  <th id="exam_start_date">Mark</th>
-                  <th id="exam_start_time">Comment</th>
+                    <th id="exam_start_date">Sl No</th>
+                    <th id="exam_title">Exam Date</th>
+                  <th id="exam_start_date">Exam Title</th>
                   <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                  @foreach($exam_result as $row)
+                  @foreach($exam as $row)
                 <tr>
 
-                  <td>{{$sl++}}</td>
-                  <td>{{$row->user->name}}</td>
-                  <td> {{$row->mark}}</td>
-                  <td> {{$row->comment}}</td>
+                  <td> {{$sl++}}</td>
+                  <td>{{$row->exam_start_date}}</td>
+                  <td>{{$row->exam_title}}</td>
                   <td>
-                    <a href="{{ route('exam_result.view',$row->id)}}" class="btn btn-sm btn-primary" href=""><i class="far fa-eye"></i>View</a>
-                    <a href="{{ route('exam_result.edit',$row->id)}}" class="btn btn-sm btn-warning" href=""><i class="far fa-edit"></i>Edit</a>
-                    <a href="{{ route('exam_result.delete', $row->id)}}" class="btn btn-sm btn-danger" href=""><i class="fa fa-trash"></i>Delete</a>
+                    <a href="{{ route('exam_result.list',$row->id)}}" class="btn btn-sm btn-primary" href=""><i class="far fa-eye"></i>Show Result</a>
                   </td>
                 </tr>
                 @endforeach

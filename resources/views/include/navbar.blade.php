@@ -79,8 +79,8 @@ $route = Route::current()->getName();
             </ul>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="{{ route('exam_result.list') }}"
-                        class="nav-link {{ $route == 'exam_result.list' ? 'active' : '' }}">
+                    <a href="{{ route('all_exam_result.list') }}"
+                        class="nav-link {{ $route == 'all_exam_result.list' ? 'active' : '' }}">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Exam Result List</p>
                     </a>

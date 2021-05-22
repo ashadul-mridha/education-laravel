@@ -35,8 +35,8 @@
 
           <div class="card">
             <div class="card-header">
-              <h2 class="card-title">Exam Result</h2>
-              <a href="{{ route('exam_result.list') }}"><h4 class="btn btn-sm btn-success float-right"><i class="fa fa-list">All Exam Result</i></h4></a>
+              <h2 class="card-title"> All Exam Result</h2>
+              <a href="{{ route('all_exam_result.list') }}"><h4 class="btn btn-sm btn-success float-right"><i class="fa fa-list">All Exam Result</i></h4></a>
             </div>
             <!-- /.card-header -->
             <div class="card-body">

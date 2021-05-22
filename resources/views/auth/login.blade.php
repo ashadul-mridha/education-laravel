@@ -1,30 +1,58 @@
-@extends('layouts.guest')
+
+{{-- @extends('layouts.guest') --}}
+@extends('frontend.home')
 
 
-@section('guest_content')
+@section('content')
 
-    <div style="color: #35977D" class="admin_text">WELCOME!</div>
-    <div>
-    <form method="POST" action="" id="login-form">
-            @csrf
-            <div class="form-group">
-                <input id="email" type="email" class="form-control" name="email" placeholder="Email">
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-4">
+            <h1>logo</h1>
+        </div>
+        <div class="col-md-8">
+            <div style="color: #FC5F00" class="admin_text"><h1 style="color: #FC5F00" >Welcome!</h1></div>
+            <div>
+                <form method="POST" action="" id="login-form">
+                    @csrf
+                    <div class="row">
+                        <div class="col-md-9">
+                            <input id="email" type="email" class="form-control" name="email" placeholder="Enter Your Email">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-9">
+                            <input id="password" type="password" class="form-control" name="password" placeholder=" Enter Your Password">
+                        </div>
+                    </div>
+                    {{-- <div class="form-group">
+                        <input id="email" type="email" class="form-control" name="email" placeholder="Email">
 
+                    </div>
+
+                    <div class="form-group">
+                        <input id="password" type="password" class="form-control" name="password" placeholder="Password">
+
+                    </div> --}}
+
+                    <div class="row mt-3 mb-3">
+                        <div class="col-md-6">
+                            <a href="{{ route('password.request') }}" class="forgot-password" style="color: #FC5F00">
+                                {{ __('Forgot Password') }}? </a>
+                        </div>
+                        <div class="col-md-6">
+                            <button class="btn" style="color: #FC5F00; border-color: #FC5F00" type="submit"> Login </button>
+                        </div>
+                    </div>
+
+
+                </form>
             </div>
 
-            <div class="form-group">
-                <input id="password" type="password" class="form-control" name="password" placeholder="Password">
-
-            </div>
-
-            <a href="{{ route('password.request') }}" class="forgot-password" style="color: #35977D">
-                {{ __('Forgot Password') }}? </a>
-
-            <button class="btn" style="color: #35977D; border-color: #35977D" type="submit"> Login </button>
-
-        </form>
+        </div>
     </div>
-
+</div>
 
 
 

@@ -37,12 +37,34 @@ class ExamResultController extends Controller
 
         Toastr::info('Exam Result Added Successfully', 'Done', ["positionClass" => "toast-top-right"]);
 
-        return redirect()->route('exam_result.list');
+        return redirect()->route('all_exam_result.list');
     }
 
-    public function list(){
-        $all_data = ExamResult::with('user','exam')->get();
-        return view('backend.exam_result.list',compact('all_data'));
+    public function all_exam(){
+        $exam = Exam::orderBy('id','DESC')->get();
+        return view('backend.exam_result.all_exam_result',compact('exam'));
+    }
+
+    public function list($id){
+
+        $exam_result = ExamResult::with('user','exam')
+                                ->where('exam_id', '=', $id)
+                                ->orderBy('mark','DESC')
+                                ->get();
+        
+        $exam = Exam::findorfail($id);   
+
+        $top_mark = ExamResult::where('exam_id', '=', $id)
+                                ->get()
+                                ->max('mark');  
+
+        $min_mark = ExamResult::where('exam_id', '=', $id)
+                                ->get()
+                                ->min('mark');  
+                                
+                                                   
+        
+        return view('backend.exam_result.list',compact('exam_result','exam','top_mark','min_mark'));
     }
 
     public function view($id){
@@ -69,6 +91,7 @@ class ExamResultController extends Controller
 
         $data = ExamResult::findorfail($request->id);
 
+
         $data->exam_id = $request->exam_id;
         $data->user_id = $request->user_id;
         $data->mark = $request->mark;
@@ -78,15 +101,15 @@ class ExamResultController extends Controller
 
         Toastr::info('Exam Result Updated Successfully', 'Done', ["positionClass" => "toast-top-right"]);
 
-        return redirect()->route('exam_result.list');
+        return redirect()->route('exam_result.list',$data->exam_id);
     }
 
     public function delete($id){
-        $data = ExamQuestion::findorfail($id);
+        $data = ExamResult::findorfail($id);
         $data->delete();
         
         Toastr::error('Exam Result Deleted Successfully', 'Done', ["positionClass" => "toast-top-right"]);
 
-        return redirect()->route('exam_result.list');
+        return redirect()->route('all_exam_result.list');
     }
 }
