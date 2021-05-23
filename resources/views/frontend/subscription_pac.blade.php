@@ -234,7 +234,7 @@
                     {{-- <div class="price">Discount Price<strong>{{ '$' .$row->discount_price}}</strong> / MONTH</div> --}}
                     <div class="pricing-body">
                         <ul class="pricing-table-ul">
-                            <li><i class="fa fa-send"></i> {{$row->subscription_details}} </li>
+                            <li><i class="fa fa-send"></i> {!!  html_entity_decode($row->subscription_details) !!} </li>
                             <li><i class="fa fa-cloud"></i> 50 GB Disk Space</li>
                             <li><i class="fa fa-database"></i> Unlimited MySQL Database</li>
                             <li class="not-avail"><i class="fa fa-clock-o"></i> 24X7 Support</li>

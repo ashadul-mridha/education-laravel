@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Exam;
 use Toastr;
+use Str;
 
 class ExamController extends Controller
 {
@@ -24,7 +25,10 @@ class ExamController extends Controller
 
         $exam = new Exam();
 
+        // $slug = $request->exam_title. Str::random();
+        
         $exam->exam_title = $request->exam_title;
+        $exam->slug = $request->exam_title.Str::random();
         $exam->exam_start_date = $request->exam_start_date;
         $exam->exam_start_time = $request->exam_start_time;
         $exam->exam_end_time = $request->exam_end_time;

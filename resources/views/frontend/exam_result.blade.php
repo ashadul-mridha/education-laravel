@@ -31,7 +31,7 @@
                       <td>{{$row->exam_start_date}}</td>
                       <td>{{$row->exam_title}}</td>
                       <td>
-                        <a href="{{ route('single_exam_result',$row->id)}}" class="btn btn-sm btn-primary" href=""><i class="far fa-eye"></i>Show Result</a>
+                        <a href="{{ route('single_exam_result',$row->slug)}}" class="btn btn-sm btn-primary" href=""><i class="far fa-eye"></i>Show Result</a>
                       </td>
                     </tr>
                     @endforeach

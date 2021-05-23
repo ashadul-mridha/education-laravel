@@ -54,7 +54,7 @@
                   @foreach($all_data as $row)
                 <tr>
 
-                  <td>{{$row->subscription_details}}</td>
+                  <td>{!! html_entity_decode($row->subscription_details) !!}</td>
                   <td>{{$row->price}}</td>
                   <td> {{$row->discount_price}}</td>
                   <td> {{$row->active}}</td>

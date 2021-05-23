@@ -69,11 +69,11 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/result/create', 'ExamResultController@create')->name('exam_result.create');
         Route::post('/result/store', 'ExamResultController@store')->name('exam_result.store');
         Route::get('/all-exam-result/', 'ExamResultController@all_exam')->name('all_exam_result.list');
-        Route::get('/result/list/{id}', 'ExamResultController@list')->name('exam_result.list');
-        Route::get('/result/view/{id}', 'ExamResultController@view')->name('exam_result.view');
-        Route::get('/result/edit/{id}', 'ExamResultController@edit')->name('exam_result.edit');
+        Route::get('/result/list/{slug}', 'ExamResultController@list')->name('exam_result.list');
+        Route::get('/result/view/{slug}', 'ExamResultController@view')->name('exam_result.view');
+        Route::get('/result/edit/{slug}', 'ExamResultController@edit')->name('exam_result.edit');
         Route::post('/result/update', 'ExamResultController@update')->name('exam_result.update');
-        Route::get('/result/delete/{id}', 'ExamResultController@delete')->name('exam_result.delete');
+        Route::get('/result/delete/{slug}', 'ExamResultController@delete')->name('exam_result.delete');
         
     });
 
@@ -183,14 +183,6 @@ Route::group(['middleware' => 'auth'], function () {
 
 //frontend
 
-// Route::get('/',function(){
-//     return view('frontend.home');
-// })->name('frontend.home');
-
-// Route::get('/login', function () {
-
-// return view('auth.login');
-// })->name('login.form');
 
 Route::get('/','FrontendController@home')->name('frontend.home');
 Route::get('/login','FrontendController@login_form')->name('login.form');
@@ -201,7 +193,7 @@ Route::post('/sign-up','SignupController@register')->name('register');
 
 //menu
 route::get('/exam-result','FrontendController@exam_result')->name('exam_result');
-route::get('/exam-result/{id}','FrontendController@all_exam_result')->name('single_exam_result');
+route::get('/exam-result/{slug}','FrontendController@all_exam_result')->name('single_exam_result');
 route::get('/free-tutorials','FrontendController@free_tutorials')->name('free_tutorials');
 route::get('/subscription-package','FrontendController@subscription_package')->name('subscription_package');
 route::get('/contacts','FrontendController@contact')->name('contact');

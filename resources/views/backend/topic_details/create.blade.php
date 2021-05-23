@@ -58,10 +58,11 @@
                     <div class="col-md-12">
                         {{-- use summernote plugin --}}
                         <label for="description" class="text-info">Description</label>
-                        <textarea class="textarea" name="description" placeholder="Place some text here"
+                        <textarea class="textarea" id="summernote" name="description" rows="6" placeholder="Place some text here"
                                   style="width: 100%; height: 400px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">
                                 {{old('description')}}
                         </textarea>
+                       
                     </div>
                 </div>
 

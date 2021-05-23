@@ -33,13 +33,16 @@
     <link rel="stylesheet" href="{{ asset('assets/frontend')}}/css/flaticon.css">
     <link rel="stylesheet" href="{{ asset('assets/frontend')}}/css/icomoon.css">
     <link rel="stylesheet" href="{{ asset('assets/frontend')}}/css/style.css">
+
+    <link rel="shortcut icon" href="{{ asset('Public/setting/favicon').'/'.$data->favicon }}" type="image/x-icon">
+
   </head>
   <body>
 	  <div class="bg-top navbar-light">
     	<div class="container">
     		<div class="row no-gutters d-flex align-items-center align-items-stretch">
     			<div class="col-md-4 d-flex align-items-center py-4">
-    				<a class="navbar-brand" href="index.html"> <span>{{ $data->title}}</span> </a>
+    				<a class="navbar-brand" href="{{ route('frontend.home')}}"> <span>{{ $data->title}}</span> </a>
     			</div>
 	    		<div class="col-lg-8 d-block">
 		    		<div class="row d-flex">

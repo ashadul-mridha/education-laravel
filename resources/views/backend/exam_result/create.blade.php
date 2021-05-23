@@ -46,7 +46,7 @@
                     <div class="col-12 col-md-12">
                       <div class="form-group">
                         <label class="text-info">Select User</label>
-                        <select name="user_id" class="form-control select2 select2-info" data-dropdown-css-class="select2-info" style="width: 100%;">
+                        <select name="user_id" class="form-control select2" style="width: 100%;">
                             @foreach ($all_user as $row)
                                 <option value="{{$row->id}}">{{$row->name}} </option>
                             @endforeach
@@ -63,11 +63,11 @@
                     <div class="col-12 col-md-12">
                       <div class="form-group">
                         <label class="text-info">Select Exam</label>
-                        <select name="exam_id" class="form-control select2 select2-info" data-dropdown-css-class="select2-info" style="width: 100%;">
+                        <select name="slug" class="form-control select2" style="width: 100%;">
                             @foreach ($all_exam as $row)
-                                <option value="{{$row->id}}">{{$row->exam_title}} </option>
+                                <option value="{{$row->slug}}">{{$row->exam_title}} </option>
                             @endforeach
-                        @error('exam_id')
+                        @error('slug')
                         <strong class="text-danger">{{ $message }} </strong>
                         @enderror 
                         </select>

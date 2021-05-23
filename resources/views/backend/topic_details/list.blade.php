@@ -55,7 +55,7 @@
                 <tr>
 
                   <td>{{$row->topices->topices_title}}</td>
-                  <td>{{$row->description}}</td>
+                  <td>{!! html_entity_decode($row->description) !!} </td>
                   <td> {{$row->file}}</td>
                   <td> {{$row->video_path}}</td>
                   <td>

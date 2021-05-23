@@ -13,6 +13,6 @@ class ExamResult extends Model
 
     public function exam()
     {
-        return $this->belongsTo(Exam::class, 'exam_id', 'id');
+        return $this->belongsTo(Exam::class, 'exam_slug', 'slug');
     }
 }

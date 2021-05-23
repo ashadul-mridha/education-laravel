@@ -25,24 +25,25 @@ class FrontendController extends Controller
         return view('frontend.exam_result',compact('exam'));
     }
 
-    public function all_exam_result($id){
+    public function all_exam_result($slug){
 
-        $exam_result = ExamResult::with('user','exam')
-                                ->where('exam_id', '=', $id)
+        // dd($slug); 
+
+        $exam_result = ExamResult::where('exam_slug', '=', $slug)
                                 ->orderBy('mark','DESC')
                                 ->get();
         
-        $exam = Exam::findorfail($id);   
+        $exam = Exam::where('slug', '=', $slug)->first();   
 
-        $top_mark = ExamResult::where('exam_id', '=', $id)
+        $top_mark = ExamResult::where('exam_slug', '=', $slug)
                                 ->get()
                                 ->max('mark');  
 
-        $min_mark = ExamResult::where('exam_id', '=', $id)
+        $min_mark = ExamResult::where('exam_slug', '=', $slug)
                                 ->get()
                                 ->min('mark');  
                                 
-                                // dd($exam_result);                   
+                                // dd($exam);                   
         
         return view( 'frontend.single_exam_result' ,compact('exam_result','exam','top_mark','min_mark'));
     }
@@ -56,7 +57,7 @@ class FrontendController extends Controller
 
     public function subscription_package(){
 
-        $data = Subscription::orderBy('id','DESC')->get()->take(3);
+        $data = Subscription::where('active','=','active')->orderBy('id','DESC')->get();
         return view('frontend.subscription_pac',compact('data'));
     }
 

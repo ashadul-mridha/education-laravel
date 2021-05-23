@@ -17,8 +17,9 @@ class CreateExamResultsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->unsignedBigInteger('exam_id');
-            $table->foreign('exam_id')->references('id')->on('exams');
+            // $table->unsignedBigInteger('exam_id');
+            // $table->foreign('exam_id')->references('id')->on('exams');
+            $table->string('exam_slug');
             $table->string('mark');
             $table->string('comment');
             $table->string('created_by')->nullable();

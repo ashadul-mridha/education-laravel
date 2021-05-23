@@ -36,7 +36,7 @@
           <div class="card">
             <div class="card-header">
               <h2 class="card-title">Edit Exam Result</h2>
-              <a href="{{ route('exam_result.list') }}"><h4 class="btn btn-sm btn-success float-right"><i class="fa fa-list">All Exam Result</i></h4></a>
+              {{-- <a href="{{ route('exam_result.list'), $data->exam_slug }}"><h4 class="btn btn-sm btn-success float-right"><i class="fa fa-list">All Exam Result</i></h4></a> --}}
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -60,9 +60,9 @@
                     <div class="col-12 col-md-12">
                       <div class="form-group">
                         <label class="text-info">Select Exam</label>
-                        <select name="exam_id" class="form-control select2 select2-info" data-dropdown-css-class="select2-info" style="width: 100%;">
+                        <select name="exam_slug" class="form-control select2 select2-info" data-dropdown-css-class="select2-info" style="width: 100%;">
                             @foreach ($all_exam as $row)
-                                <option value="{{$row->id}}" {{ $data->exam_id == $row->id ? 'selected' : ' '}}>{{$row->exam_title}} </option>
+                                <option value="{{$row->slug}}" {{ $data->exam_slug == $row->slug ? 'selected' : ' '}}>{{$row->exam_title}} </option>
                             @endforeach
                         </select>
                       </div>
