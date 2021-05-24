@@ -27,8 +27,6 @@ class FrontendController extends Controller
 
     public function all_exam_result($slug){
 
-        // dd($slug); 
-
         $exam_result = ExamResult::where('exam_slug', '=', $slug)
                                 ->orderBy('mark','DESC')
                                 ->get();
@@ -41,9 +39,7 @@ class FrontendController extends Controller
 
         $min_mark = ExamResult::where('exam_slug', '=', $slug)
                                 ->get()
-                                ->min('mark');  
-                                
-                                // dd($exam);                   
+                                ->min('mark');                   
         
         return view( 'frontend.single_exam_result' ,compact('exam_result','exam','top_mark','min_mark'));
     }

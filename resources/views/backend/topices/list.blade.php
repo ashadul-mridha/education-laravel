@@ -1,3 +1,8 @@
+@php
+  // use App\Topices;
+
+  // $a= Topices::where('topices_type' , '=', $all_data->topices_type);
+@endphp
 @extends('master')
 
 @section('content')
@@ -36,15 +41,15 @@
           <div class="card">
             <div class="card-header">
               <h2 class="card-title">Topices List</h2>
-              <a href="{{route('topices.create')}}"><h4 class="btn btn-sm btn-success float-right"><i class="fa fa-plus-circle">Add Topices</i></h4></a>
+              <a href="{{route('topices.create')}}"><h4 class="btn btn-sm btn-success float-right"><i class="fa fa-plus-circle">Add Topices Title</i></h4></a>
             </div>
             <!-- /.card-header -->
             <div class="card-body table-responsive">
               <table id="example1" class="table table-bordered table-striped table-hover">
                 <thead class="bg-info">
                 <tr>
-                  <th>Topices Title</th>
                   <th>Topices Type</th>
+                  <th>Topices Title</th>
                   <th>Topices View</th>
                   <th>Action</th>
                 </tr>
@@ -53,10 +58,11 @@
                   @foreach($all_data as $row)
                 <tr>
 
+                  <td>{{ $row->topices_data->topics_type }}</td>
                   <td>{{$row->topices_title}}</td>
-                  <td>{{$row->topices_type}}</td>
                   <td> {{$row->topices_view}}</td>
                   <td>
+                    <a href="{{ route('top_de.list',$row->topices_title_slug)}}" class="btn btn-sm btn-primary" href=""><i class="far fa-eye"></i>Show {{$row->topices_title}} Details</a>
                     <a href="{{ route('topices.view',$row->id)}}" class="btn btn-sm btn-primary" href=""><i class="far fa-eye"></i>View</a>
                     <a href="{{ route('topices.edit',$row->id)}}" class="btn btn-sm btn-warning" href=""><i class="far fa-edit"></i>Edit</a>
                     <a href="{{ route('topices.delete', $row->id)}}" class="btn btn-sm btn-danger" href=""><i class="fa fa-trash"></i>Delete</a>

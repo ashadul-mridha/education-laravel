@@ -13,7 +13,7 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{ route('top_de.list')}}">All Topices Details</a></li>
+              <li class="breadcrumb-item"><a href="{{ route('top_de.list',$data->topices_id)}}">{{$data->topices->topices_title}} Topices Details</a></li>
               {{-- <li class="breadcrumb-item active">Dashboard v1</li> --}}
             </ol>
           </div><!-- /.col -->
@@ -49,7 +49,7 @@
                   </li>
 
                   <li class="list-group-item">
-                    <b>Description: </b> <a class="float-right">{{ $data->description }}</a>
+                    <b>Description: </b> <a class="float-right">{!! html_entity_decode($data->description) !!}</a>
                   </li>
 
                   <li class="list-group-item">

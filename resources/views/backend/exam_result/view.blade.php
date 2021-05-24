@@ -63,7 +63,7 @@
 
                 </ul>
 
-                <a href="{{ route('exam_result.edit',$data->exam_slug) }}" class="btn btn-primary btn-block"><b>Edit</b></a>
+                <a href="{{ route('exam_result.edit',$data->id) }}" class="btn btn-primary btn-block"><b>Edit</b></a>
               </div>
               <!-- /.card-body -->
             </div>

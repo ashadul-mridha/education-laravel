@@ -142,10 +142,19 @@ $route = Route::current()->getName();
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="{{ route('topices.list') }}"
-                        class="nav-link {{ $route == 'topices.list' ? 'active' : '' }}">
+                    <a href="{{ route('topices_type.list') }}"
+                        class="nav-link {{ $route == 'topices_type.list' ? 'active' : '' }}">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Topices List</p>
+                        <p>All Topics Type</p>
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('topices.create') }}"
+                        class="nav-link {{ $route == 'topices.create' ? 'active' : '' }}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Add Topics Title</p>
                     </a>
                 </li>
             </ul>
@@ -154,7 +163,7 @@ $route = Route::current()->getName();
                     <a href="{{ route('top_de.create') }}"
                         class="nav-link {{ $route == 'top_de.create' ? 'active' : '' }}">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Topices Details List</p>
+                        <p>Add Topices Details List</p>
                     </a>
                 </li>
             </ul>

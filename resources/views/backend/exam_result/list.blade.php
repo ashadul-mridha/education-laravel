@@ -83,9 +83,9 @@
                   <td> {{$row->mark}}</td>
                   <td> {{$row->comment}}</td>
                   <td>
-                    <a href="{{ route('exam_result.view',$row->exam_slug)}}" class="btn btn-sm btn-primary" href=""><i class="far fa-eye"></i>View</a>
-                    <a href="{{ route('exam_result.edit',$row->exam_slug)}}" class="btn btn-sm btn-warning" href=""><i class="far fa-edit"></i>Edit</a>
-                    <a href="{{ route('exam_result.delete', $row->exam_slug)}}" class="btn btn-sm btn-danger" href=""><i class="fa fa-trash"></i>Delete</a>
+                    <a href="{{ route('exam_result.view',$row->id)}}" class="btn btn-sm btn-primary" href=""><i class="far fa-eye"></i>View</a>
+                    <a href="{{ route('exam_result.edit',$row->id)}}" class="btn btn-sm btn-warning" href=""><i class="far fa-edit"></i>Edit</a>
+                    <a href="{{ route('exam_result.delete', $row->id)}}" class="btn btn-sm btn-danger" href=""><i class="fa fa-trash"></i>Delete</a>
                   </td>
                 </tr>
                 @endforeach

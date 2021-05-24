@@ -16,6 +16,7 @@ class CreateTopicesTable extends Migration
         Schema::create('topices', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('topices_title');
+            $table->string('topices_title_slug');
             $table->string('topices_type');
             $table->string('topices_view');
             $table->string('created_by')->nullable();

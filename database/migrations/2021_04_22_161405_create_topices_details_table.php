@@ -16,9 +16,10 @@ class CreateTopicesDetailsTable extends Migration
         Schema::create('topices_details', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('topices_id');
+            $table->string('topices_slug');
             $table->string('description');
-            $table->string('file');
-            $table->string('video_path');
+            $table->string('file')->nullable();
+            $table->string('video_path')->nullable();
             $table->string('topices_details');
             $table->string('title');
             $table->string('topic_view');

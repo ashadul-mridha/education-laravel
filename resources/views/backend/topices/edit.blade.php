@@ -36,13 +36,29 @@
           <div class="card">
             <div class="card-header">
               <h2 class="card-title"> Add Topices</h2>
-              <a href="{{ route('topices.list') }}"><h4 class="btn btn-sm btn-success float-right"><i class="fa fa-list">All Topices List</i></h4></a>
+              <a href="{{ route('topices.list',$data->topices_type) }}"><h4 class="btn btn-sm btn-success float-right"><i class="fa fa-list"> {{ $data->topices_data->topics_type }} Topices List</i></h4></a>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
               <form action="{{ route('topices.update')}}" method="POST" enctype="multipart/form-data">
                 @csrf
 
+                
+                <div class="row">
+                  <div class="col-md-12">
+                      <label class="text-info" for="topices_type">Topices Type</label>
+
+                      <select class="form-control" name="topices_type" id="topices_type">
+                        @foreach ($topics_type as $row)
+                          <option value="{{ $row->topics_slug }}" {{$row->topics_slug == $data->topices_type ? 'selected' : ' '}}> {{$row->topics_type}} </option>
+                        @endforeach
+                      </select>
+                      @error('topices_type')
+                      <strong class="text-danger">{{ $message }} </strong>
+                      @enderror  
+                  </div>
+              </div>
+              <br>
                 <div class="row">
                     <div class="col-md-12">
                         <label class="text-info" for="topices_title">Topice Title</label>
@@ -55,18 +71,13 @@
                 <br>
                 <div class="row">
                     <div class="col-md-12">
-                        <label class="text-info" for="topices_type">Topice Type</label>
-                        <input type="text" class="form-control" value="{{ $data->topices_type }}" name="topices_type" placeholder="Enter Topices Title:">
-                        @error('topices_type')
-                        <strong class="text-danger">{{ $message }} </strong>
-                        @enderror  
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-12">
                         <label class="text-info" for="topices_view">Topice View</label>
-                        <input type="text" class="form-control" value="{{ $data->topices_view }}" name="topices_view" placeholder="Enter Topices Title:">
+
+                        <select class="form-control" name="topices_view" id="topices_view">
+                          <option value="free" {{$data->topices_view == 'free' ? 'selected' : ' '}}>Free</option>
+                          <option value="paid" {{$data->topices_view == 'paid' ? 'selected' : ' '}}>paid</option>
+                        </select>
+              
                         @error('topices_view')
                         <strong class="text-danger">{{ $message }} </strong>
                         @enderror  

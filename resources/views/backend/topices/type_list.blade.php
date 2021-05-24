@@ -12,7 +12,7 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#"> All Topices Details</a></li>
+              <li class="breadcrumb-item"><a href="#">Topices Type List</a></li>
             
             </ol>
           </div><!-- /.col -->
@@ -35,19 +35,16 @@
 
           <div class="card">
             <div class="card-header">
-              <h2 class="card-title">Topices Details</h2>
-              <a href="{{route('top_de.create')}}"><h4 class="btn btn-sm btn-success float-right"><i class="fa fa-plus-circle">Add Topices Details</i></h4></a>
+              <h2 class="card-title">Topices List</h2>
+              <a href="{{route('topices_type.create')}}"><h4 class="btn btn-sm btn-success float-right"><i class="fa fa-plus-circle">Add Topices Type</i></h4></a>
             </div>
             <!-- /.card-header -->
             <div class="card-body table-responsive">
               <table id="example1" class="table table-bordered table-striped table-hover">
                 <thead class="bg-info">
                 <tr>
-                  <th>Topices Type</th>
-                  <th>Topices Title</th>
-                  <th>Description</th>
-                  <th>File</th>
-                  <th>Video Path</th>
+                  <th>Topices</th>
+                  <th>Topices Slug</th>
                   <th>Action</th>
                 </tr>
                 </thead>
@@ -55,15 +52,11 @@
                   @foreach($all_data as $row)
                 <tr>
 
-                  <td>{{optional($row->topices_type_name)->topics_type}}</td>
-                  <td>{{optional($row->topices)->topices_title}}</td>
-                  <td>{!! html_entity_decode($row->description) !!} </td>
-                  <td> {{$row->file}}</td>
-                  <td> {{$row->video_path}}</td>
+                  <td>{{$row->topics_type}}</td>
+                  <td>{{$row->topics_slug}}</td>
                   <td>
-                    <a href="{{ route('top_de.view',$row->id)}}" class="btn btn-sm btn-primary" href=""><i class="far fa-eye"></i>View</a>
-                    <a href="{{ route('top_de.edit',$row->id)}}" class="btn btn-sm btn-warning" href=""><i class="far fa-edit"></i>Edit</a>
-                    <a href="{{ route('top_de.delete', $row->id)}}" class="btn btn-sm btn-danger" href=""><i class="fa fa-trash"></i>Delete</a>
+                    <a href="{{ route('topices.list',$row->topics_slug)}}" class="btn btn-sm btn-primary" href=""><i class="far fa-eye"></i>Show {{$row->topics_type}} Topics Title</a>
+              
                   </td>
                 </tr>
                 @endforeach

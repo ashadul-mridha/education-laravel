@@ -36,7 +36,7 @@
           <div class="card">
             <div class="card-header">
               <h2 class="card-title"> Edit Topices Details</h2>
-              <a href="{{ route('top_de.list') }}"><h4 class="btn btn-sm btn-success float-right"><i class="fa fa-list">All Topices Details List</i></h4></a>
+              <a href="{{ route('top_de.list',$data->topices_id) }}"><h4 class="btn btn-sm btn-success float-right"><i class="fa fa-list">{{$data->topices_type_name->topics_type}} Topices Details List</i></h4></a>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -44,11 +44,22 @@
                 @csrf
 
                 <div class="row">
+                  <div class="col-md-12">
+                      <label class="text-info" for="topices_slug">Select Your Topics Type</label>
+                      <select name="topices_slug" class="form-control select2 select2-info" data-dropdown-css-class="select2-info" style="width: 100%;">
+                          @foreach ($topicstype as $row)
+                              <option value="{{ $row->topics_slug}}"  {{$row->topics_slug == $data->topices_slug ? 'selected' : ' ' }}>{{ $row->topics_type}}</option>
+                          @endforeach
+                      </select>
+                  </div>
+                </div>
+
+                <div class="row">
                     <div class="col-md-12">
-                        <label class="text-info" for="topic_id">Select Your Topics</label>
+                        <label class="text-info" for="topic_id">Select Your Topics Title</label>
                         <select name="topic_id" class="form-control select2 select2-info" data-dropdown-css-class="select2-info" style="width: 100%;">
                             @foreach ($topices as $row)
-                                <option value="{{ $row->id}}" {{$row->id == $data->topices->id }}>{{ $row->topices_title}}</option>
+                                <option value="{{ $row->topices_title_slug}}" {{$row->topices_title_slug == $data->topices_id ? 'selected' : ' ' }}>{{ $row->topices_title}}</option>
                             @endforeach
                         </select>
                     </div>

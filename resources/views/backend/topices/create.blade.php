@@ -36,13 +36,28 @@
           <div class="card">
             <div class="card-header">
               <h2 class="card-title"> Add Topices</h2>
-              <a href="{{ route('topices.list') }}"><h4 class="btn btn-sm btn-success float-right"><i class="fa fa-list">All Topices List</i></h4></a>
+              <a href="{{ route('topices_type.list') }}"><h4 class="btn btn-sm btn-success float-right"><i class="fa fa-list">All Topices Type List</i></h4></a>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
               <form action="{{ route('topices.store')}}" method="POST" enctype="multipart/form-data">
                 @csrf
 
+                <div class="row">
+                  <div class="col-md-12">
+                      <label class="text-info" for="c">Topice Type</label>
+                      <select class="form-control" name="topices_type" id="topices_type">
+                        @foreach ($topics_type as $row)
+                          <option value="{{ $row->topics_slug }}"> {{$row->topics_type}} </option>
+                        @endforeach
+                      </select>
+                      {{-- <input type="text" class="form-control" value="{{ old('topices_type')}}" name="topices_type" placeholder="Enter Topices Title:"> --}}
+                      @error('topices_type')
+                      <strong class="text-danger">{{ $message }} </strong>
+                      @enderror  
+                  </div>
+              </div>
+              <br>
                 <div class="row">
                     <div class="col-md-12">
                         <label class="text-info" for="topices_title">Topice Title</label>
@@ -55,18 +70,12 @@
                 <br>
                 <div class="row">
                     <div class="col-md-12">
-                        <label class="text-info" for="topices_type">Topice Type</label>
-                        <input type="text" class="form-control" value="{{ old('topices_type')}}" name="topices_type" placeholder="Enter Topices Title:">
-                        @error('topices_type')
-                        <strong class="text-danger">{{ $message }} </strong>
-                        @enderror  
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-12">
                         <label class="text-info" for="topices_view">Topice View</label>
-                        <input type="text" class="form-control" value="{{ old('topices_view')}}" name="topices_view" placeholder="Enter Topices Title:">
+                        <select class="form-control" name="topices_view" id="topices_view">
+                          <option value="free">Free</option>
+                          <option value="paid">paid</option>
+                        </select>
+     
                         @error('topices_view')
                         <strong class="text-danger">{{ $message }} </strong>
                         @enderror  
@@ -78,7 +87,7 @@
              
             <!-- /.card-body -->
             <div class="card-footer">
-                  <button type="submit" id="butsave" class="btn btn-primary">Submit</button>
+                  <button type="submit" id="butsave" class="btn btn-primary">Add Topics Title</button>
             </div>
             </div>
           </form>

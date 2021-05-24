@@ -67,16 +67,17 @@ class ExamResultController extends Controller
         return view('backend.exam_result.list',compact('exam_result','exam','top_mark','min_mark'));
     }
 
-    public function view($slug){
-        $data = ExamResult::with('exam','user')->where('exam_slug','=',$slug)->first();
+    public function view($id){
+        $data = ExamResult::with('exam','user')->findorfail($id);
+
         return view('backend.exam_result.view',compact('data'));
     }
 
-    public function edit($slug){
+    public function edit($id){
 
         $all_exam = Exam::all();
         $all_user = User::all();
-        $data = ExamResult::where('exam_slug','=',$slug)->first();
+        $data = ExamResult::findorfail($id);
         
         return view('backend.exam_result.edit',compact('all_exam','all_user','data'));
     }
@@ -104,8 +105,9 @@ class ExamResultController extends Controller
         return redirect()->route('exam_result.list',$data->exam_slug);
     }
 
-    public function delete($slug){
-        $data = ExamResult::where('exam_slug','=',$slug)->first();
+    public function delete($id){
+       
+        $data = ExamResult::findorfail($id);
         $data->delete();
         
         Toastr::error('Exam Result Deleted Successfully', 'Done', ["positionClass" => "toast-top-right"]);

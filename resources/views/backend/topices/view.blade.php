@@ -13,7 +13,7 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{ route('topices.list')}}">All Data</a></li>
+              <li class="breadcrumb-item"><a href="{{ route('topices.list',$data->topices_type)}}">{{ $data->topices_data->topics_type }} Topices</a></li>
               {{-- <li class="breadcrumb-item active">Dashboard v1</li> --}}
             </ol>
           </div><!-- /.col -->
@@ -44,18 +44,14 @@
                   
 
                 <li class="list-group-item">
-                  <b> Topices Status: </b> <a class="float-right">{{ $data->active }}</a>
+                  <b> Topices Type: </b> <a class="float-right">{{ $data->topices_data->topics_type }}</a>
                 </li>
 
                 <li class="list-group-item">
-                  <b>Price: </b> <a class="float-right">{{ $data->price }}</a>
+                  <b>Topices Title: </b> <a class="float-right">{{ $data->topices_title }}</a>
                 </li>
                 <li class="list-group-item">
-                  <b>Discount Price: </b> <a class="float-right">{{ $data->discount_price }}</a>
-                </li>
-
-                <li class="list-group-item">
-                  <b>Details: </b> <a class="float-right">{{ $data->subscription_details }}</a>
+                  <b>Topices View: </b> <a class="float-right">{{ $data->topices_view }}</a>
                 </li>
                 
               </ul>

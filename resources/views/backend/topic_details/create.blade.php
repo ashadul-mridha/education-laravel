@@ -36,7 +36,7 @@
           <div class="card">
             <div class="card-header">
               <h2 class="card-title"> Add Topices Details</h2>
-              <a href="{{ route('top_de.list') }}"><h4 class="btn btn-sm btn-success float-right"><i class="fa fa-list">All Topices Details List</i></h4></a>
+              {{-- <a href="{{ route('top_de.list',$topices->topices_title_slug) }}"><h4 class="btn btn-sm btn-success float-right"><i class="fa fa-list">All Topices Details List</i></h4></a> --}}
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -44,11 +44,22 @@
                 @csrf
 
                 <div class="row">
+                  <div class="col-md-12">
+                      <label class="text-info" for="topices_slug">Select Your Topics Type</label>
+                      <select name="topices_slug" class="form-control select2 select2-info" data-dropdown-css-class="select2-info" style="width: 100%;">
+                          @foreach ($topices_type as $row)
+                              <option value="{{ $row->topics_slug}}">{{ $row->topics_type}}</option>
+                          @endforeach
+                      </select>
+                  </div>
+                </div>
+
+                <div class="row">
                     <div class="col-md-12">
                         <label class="text-info" for="topic_id">Select Your Topics</label>
                         <select name="topic_id" class="form-control select2 select2-info" data-dropdown-css-class="select2-info" style="width: 100%;">
                             @foreach ($topices as $row)
-                                <option value="{{ $row->id}}">{{ $row->topices_title}}</option>
+                                <option value="{{ $row->topices_title_slug}}">{{ $row->topices_title}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -91,7 +102,7 @@
              
             <!-- /.card-body -->
             <div class="card-footer">
-                  <button type="submit" id="butsave" class="btn btn-primary">Submit</button>
+                  <button type="submit" id="butsave" class="btn btn-primary">Add Details</button>
             </div>
             </div>
           </form>

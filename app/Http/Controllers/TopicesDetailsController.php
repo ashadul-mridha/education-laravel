@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\TopicesDetails;
 use App\Topices;
+use App\Topicstype;
 use DB;
 use Toastr;
 
@@ -13,13 +14,15 @@ class TopicesDetailsController extends Controller
     public function create(){
 
         $topices = Topices::all();
-        return view('backend.topic_details.create',compact('topices'));
+        $topices_type = Topicstype::all();
+        return view('backend.topic_details.create',compact('topices','topices_type'));
     }
 
     public function store(Request $request){
        
         $request->validate([
             'topic_id' => 'required',
+            'topices_slug' => 'required',
             'description' => 'required',
         ]);
 
@@ -30,40 +33,43 @@ class TopicesDetailsController extends Controller
             $file = $request->file('file');
             $file_name = date("Ymdhis") . '.' . $file->getClientOriginalExtension();
             $file->move(public_path('Public/topics/file') , $file_name);
+            $data->file = $file_name;
         }
 
         if ($request->hasFile('video_path')) {
             $video_file = $request->file('video_path');
             $video_file_name = date("Ymdhis") . '.' . $video_file->getClientOriginalExtension();
             $video_file->move(public_path('Public/topics/video_file') , $video_file_name);
+            $data->video_path = $video_file_name;
         }
 
         $data->topices_id = $request->topic_id;
+        $data->topices_slug = $request->topices_slug;
         $data->description = $request->description;
-        $data->file = $file_name;
-        $data->video_path = $video_file_name;
         $data->created_by = $request->created_by;
         $data->save();
         Toastr::info(' Topices Details Added Successfully', 'Done', ["positionClass" => "toast-top-right"]);
 
-        return redirect()->route('top_de.list');
+        return redirect()->route('top_de.list',$data->topices_id);
     }
 
-    public function list(){
-        $all_data = TopicesDetails::with('topices')->get();
+    public function list($slug){
+        
+        $all_data = TopicesDetails::with('topices','topices_type_name')->where('topices_id','=',$slug)->get();
         return view('backend.topic_details.list',compact('all_data'));
     }
 
     public function view($id){
-        $data = TopicesDetails::with('topices')->findorfail($id);
+        $data = TopicesDetails::with('topices','topices_type_name')->findorfail($id);
         return view('backend.topic_details.view',compact('data'));
     }
 
     public function edit($id){
 
         $topices = Topices::all();
-        $data = TopicesDetails::findorfail($id);
-        return view('backend.topic_details.edit',compact('data','topices'));
+        $topicstype = Topicstype::all();
+        $data = TopicesDetails::with('topices','topices_type_name')->findorfail($id);
+        return view('backend.topic_details.edit',compact('data','topices','topicstype'));
     }
 
     public function update(Request $request){
@@ -128,7 +134,7 @@ class TopicesDetailsController extends Controller
 
         Toastr::info(' Topices Details Updated Successfully', 'Done', ["positionClass" => "toast-top-right"]);
 
-        return redirect()->route('top_de.list');
+        return redirect()->route('top_de.list',$data->topices_id);
     }
 
     public function delete($id){
@@ -147,6 +153,6 @@ class TopicesDetailsController extends Controller
         $data->delete();
         Toastr::error(' Topices Details Deleted Successfully', 'Done', ["positionClass" => "toast-top-right"]);
 
-        return redirect()->route('top_de.list');
+        return redirect()->route('top_de.list',$data->topices_id);
     }
 }

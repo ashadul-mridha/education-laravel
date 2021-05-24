@@ -70,10 +70,10 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/result/store', 'ExamResultController@store')->name('exam_result.store');
         Route::get('/all-exam-result/', 'ExamResultController@all_exam')->name('all_exam_result.list');
         Route::get('/result/list/{slug}', 'ExamResultController@list')->name('exam_result.list');
-        Route::get('/result/view/{slug}', 'ExamResultController@view')->name('exam_result.view');
-        Route::get('/result/edit/{slug}', 'ExamResultController@edit')->name('exam_result.edit');
+        Route::get('/result/view/{id}', 'ExamResultController@view')->name('exam_result.view');
+        Route::get('/result/edit/{id}', 'ExamResultController@edit')->name('exam_result.edit');
         Route::post('/result/update', 'ExamResultController@update')->name('exam_result.update');
-        Route::get('/result/delete/{slug}', 'ExamResultController@delete')->name('exam_result.delete');
+        Route::get('/result/delete/{id}', 'ExamResultController@delete')->name('exam_result.delete');
         
     });
 
@@ -125,9 +125,15 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::prefix('/topices')->group(function () {
 
+        
+        Route::get('/type/create', 'TopicesController@topices_type')->name('topices_type.create');
+        Route::post('/type/store', 'TopicesController@topices_type_store')->name('topices_type.store');
+        Route::get('/type/list', 'TopicesController@topices_type_list')->name('topices_type.list');
+
+
         Route::get('/create', 'TopicesController@create')->name('topices.create');
         Route::post('/store', 'TopicesController@store')->name('topices.store');
-        Route::get('/list', 'TopicesController@list')->name('topices.list');
+        Route::get('/list/{slug}', 'TopicesController@list')->name('topices.list');
         Route::get('/view/{id}', 'TopicesController@view')->name('topices.view');
         Route::get('/edit/{id}', 'TopicesController@edit')->name('topices.edit');
         Route::post('/update', 'TopicesController@update')->name('topices.update');
@@ -135,7 +141,7 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::get('details/create', 'TopicesDetailsController@create')->name('top_de.create');
         Route::post('details/store', 'TopicesDetailsController@store')->name('top_de.store');
-        Route::get('details/list', 'TopicesDetailsController@list')->name('top_de.list');
+        Route::get('details/list/{slug}', 'TopicesDetailsController@list')->name('top_de.list');
         Route::get('details/view/{id}', 'TopicesDetailsController@view')->name('top_de.view');
         Route::get('details/edit/{id}', 'TopicesDetailsController@edit')->name('top_de.edit');
         Route::post('details/update', 'TopicesDetailsController@update')->name('top_de.update');
@@ -194,6 +200,7 @@ Route::post('/sign-up','SignupController@register')->name('register');
 //menu
 route::get('/exam-result','FrontendController@exam_result')->name('exam_result');
 route::get('/exam-result/{slug}','FrontendController@all_exam_result')->name('single_exam_result');
+
 route::get('/free-tutorials','FrontendController@free_tutorials')->name('free_tutorials');
 route::get('/subscription-package','FrontendController@subscription_package')->name('subscription_package');
 route::get('/contacts','FrontendController@contact')->name('contact');
