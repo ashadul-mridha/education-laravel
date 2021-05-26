@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Exam;
 use App\ExamResult;
 use App\Subscription;
+use App\Topicstype;
 
 class FrontendController extends Controller
 {
@@ -42,13 +43,6 @@ class FrontendController extends Controller
                                 ->min('mark');                   
         
         return view( 'frontend.single_exam_result' ,compact('exam_result','exam','top_mark','min_mark'));
-    }
-
-    public function free_tutorials(){
-
-        // $data = Subscription::all();
-        // dd($data);
-        return view('frontend.free_tutorial');
     }
 
     public function subscription_package(){

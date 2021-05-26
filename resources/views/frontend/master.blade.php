@@ -17,6 +17,7 @@
     
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
+    <link rel="stylesheet" href="{{ asset('assets/frontend')}}/css/style.css">
     <link rel="stylesheet" href="{{ asset('assets/frontend')}}/css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css"> 
     <link rel="stylesheet" href="{{ asset('assets/frontend')}}/css/animate.css">
@@ -32,7 +33,6 @@
     
     <link rel="stylesheet" href="{{ asset('assets/frontend')}}/css/flaticon.css">
     <link rel="stylesheet" href="{{ asset('assets/frontend')}}/css/icomoon.css">
-    <link rel="stylesheet" href="{{ asset('assets/frontend')}}/css/style.css">
 
     <link rel="shortcut icon" href="{{ asset('Public/setting/favicon').'/'.$data->favicon }}" type="image/x-icon">
 
@@ -168,7 +168,7 @@
 	        <ul class="navbar-nav mr-auto">
 	        	<li class="nav-item {{ Request::is('/')? 'active' : ''}}"><a href="{{ route('frontend.home')}}" class="nav-link pl-0">Home</a></li>
 	        	<li class="nav-item {{ Request::is('exam-result/*') || Request::is('exam-result')  ? 'active' : ' '}}"><a href="{{ route('exam_result')}}" class="nav-link">Exam Result</a></li>
-	        	<li class="nav-item {{ Request::is('free-tutorials') ? 'active' : ' '}}"><a href="{{ route('free_tutorials')}}" class="nav-link">Free Tutorials</a></li>
+	        	<li class="nav-item {{ Request::is('free-tutorials/*') ? 'active' : ' '}}"><a href="{{ route('free_tutorials')}}" class="nav-link">Free Tutorials</a></li>
 	        	<li class="nav-item {{ Request::is('subscription-package') ? 'active' : ' '}}"><a href="{{ route('subscription_package')}}" class="nav-link">Subscription Package</a></li>
 	          <li class="nav-item {{ Request::is('contacts')? 'active' : ''}}"><a href="{{route('contact')}}" class="nav-link">Contact</a></li>
 	        </ul>
@@ -260,7 +260,7 @@
           <div class="col-md-12 text-center">
 
             <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> {{ $data->copywright_text}} <i class="icon-heart" aria-hidden="true"></i>
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> {!! html_entity_decode($data->copywright_text) !!} <i class="icon-heart" aria-hidden="true"></i>
   <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
           </div>
         </div>
@@ -274,10 +274,10 @@
 
 
   <script src="{{ asset('assets/frontend')}}/js/jquery.min.js"></script>
-  <script src="{{ asset('assets/frontend')}}/js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
   <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
   {!! Toastr::message() !!}
+  <script src="{{ asset('assets/frontend')}}/js/jquery-migrate-3.0.1.min.js"></script>
+  {{-- <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script> --}}
   <script src="{{ asset('assets/frontend')}}/js/popper.min.js"></script>
   <script src="{{ asset('assets/frontend')}}/js/bootstrap.min.js"></script>
   <script src="{{ asset('assets/frontend')}}/js/jquery.easing.1.3.js"></script>
@@ -291,6 +291,14 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="{{ asset('assets/frontend')}}/js/google-map.js"></script>
   <script src="{{ asset('assets/frontend')}}/js/main.js"></script>
+
+<script>
+  $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+</script>
     
   </body>
 </html>

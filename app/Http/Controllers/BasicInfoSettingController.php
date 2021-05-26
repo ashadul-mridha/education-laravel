@@ -88,7 +88,7 @@ class BasicInfoSettingController extends Controller
             'linkedin_link' => 'required',
             'address' => 'required',
             'copywright_text' => 'required',
-            'logo' => 'required'
+            
         ]);
 
         $data = BasicInfoSetting::findorfail($request->id);

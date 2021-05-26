@@ -201,7 +201,15 @@ Route::post('/sign-up','SignupController@register')->name('register');
 route::get('/exam-result','FrontendController@exam_result')->name('exam_result');
 route::get('/exam-result/{slug}','FrontendController@all_exam_result')->name('single_exam_result');
 
-route::get('/free-tutorials','FrontendController@free_tutorials')->name('free_tutorials');
+//free tutorials
+Route::prefix('free-tutorials')->group(function () {
+
+    route::get('/topic','FrontendtutorialController@free_tutorials')->name('free_tutorials');
+    route::get('/topic/title/{slug}','FrontendtutorialController@tutorials_title')->name('tutorials_title');
+    route::get('/topic/details/{slug}','FrontendtutorialController@tutorials_details')->name('tutorials_details');
+    
+});
+
 route::get('/subscription-package','FrontendController@subscription_package')->name('subscription_package');
 route::get('/contacts','FrontendController@contact')->name('contact');
 
