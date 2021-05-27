@@ -42,7 +42,7 @@ class FrontendtutorialController extends Controller
             return view('frontend.tutorials.topices_desc',compact('data','all_title','topice_type','all_topices'));
         }
 
-        Toastr::error('Descriptiontion Not Added', 'Sorry', ["positionClass" => "toast-top-right"]);
+        Toastr::error('Description Not Added Yet', 'Sorry', ["positionClass" => "toast-top-right"]);
         return redirect()->back();
     }
 }

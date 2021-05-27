@@ -8,6 +8,7 @@ use App\Exam;
 use App\ExamResult;
 use App\Subscription;
 use App\Topicstype;
+use Auth;
 
 class FrontendController extends Controller
 {
@@ -64,7 +65,13 @@ class FrontendController extends Controller
     }
 
     public function result(){
-        return view('frontend.result');
+
+        $exam_result = ExamResult::with('exam')
+                                ->where('user_id', '=', Auth::id() )
+                                ->orderBy('created_by','DESC')
+                                ->get();
+
+        return view('frontend.result',compact('exam_result'));
     }
 
     public function exam(){

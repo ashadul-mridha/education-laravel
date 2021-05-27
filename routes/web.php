@@ -214,10 +214,10 @@ route::get('/subscription-package','FrontendController@subscription_package')->n
 route::get('/contacts','FrontendController@contact')->name('contact');
 
 
-//user frontend
+//user nav frontend
 
 
 route::get('/subscription','FrontendController@subscription')->name('subscription');
 route::get('/full-tutorials','FrontendController@full_tutorials')->name('full_tutorials');
-route::get('/result','FrontendController@result')->name('result');
+route::get('/your/result','FrontendController@result')->name('result');
 route::get('/exam','FrontendController@exam')->name('exam');

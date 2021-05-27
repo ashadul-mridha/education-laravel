@@ -188,12 +188,12 @@ a[data-toggle="collapse"] {
         <h3>Learn {{ strtoupper($topice_type->topics_type)}}</h3>
     </div>
 
-    <ul class="list-unstyled components">
+    <ul class="list-unstyled components nav navbar-nav">
 
         @foreach ($all_title as $title)
 
-          <li>
-              <a href="{{ route('tutorials_details',$title->topices_title_slug )}}">{{ $title->topices_title}}</a>
+          <li class="nav-item">
+              <a class="nav-link {{$title->topices_view == 'paid' ? 'disabled' : ' ' }}" href="{{ route('tutorials_details',$title->topices_title_slug )}}">{{ $title->topices_title}}</a>
           </li>
           
         @endforeach
