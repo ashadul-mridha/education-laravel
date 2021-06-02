@@ -59,7 +59,7 @@ Route::group(['middleware' => 'auth'], function () {
         //exam question
         Route::get('/question/create/{id}', 'ExamQuestionController@create')->name('exam_questions.create');
         Route::post('/question/store', 'ExamQuestionController@store')->name('exam_questions.store');
-        Route::get('/question/list', 'ExamQuestionController@list')->name('exam_questions.list');
+        Route::get('/question/list{id}', 'ExamQuestionController@list')->name('exam_questions.list');
         Route::get('/question/view/{id}', 'ExamQuestionController@view')->name('exam_questions.view');
         Route::get('/question/edit/{id}', 'ExamQuestionController@edit')->name('exam_questions.edit');
         Route::post('/question/update', 'ExamQuestionController@update')->name('exam_questions.update');
@@ -205,8 +205,8 @@ route::get('/exam-result/{slug}','FrontendController@all_exam_result')->name('si
 Route::prefix('free-tutorials')->group(function () {
 
     route::get('/topic','FrontendtutorialController@free_tutorials')->name('free_tutorials');
-    route::get('/topic/title/{slug}','FrontendtutorialController@tutorials_title')->name('tutorials_title');
-    route::get('/topic/details/{slug}','FrontendtutorialController@tutorials_details')->name('tutorials_details');
+    route::get('/topic/title/{slug}','FrontendtutorialController@free_tutorials_title')->name('tutorials_title');
+    route::get('/topic/details/{slug}','FrontendtutorialController@free_tutorials_details')->name('tutorials_details');
     
 });
 
@@ -218,6 +218,18 @@ route::get('/contacts','FrontendController@contact')->name('contact');
 
 
 route::get('/subscription','FrontendController@subscription')->name('subscription');
-route::get('/full-tutorials','FrontendController@full_tutorials')->name('full_tutorials');
+
+//full tutorials
+Route::prefix('full-tutorials')->group(function () {
+
+    
+    route::get('/topic','FrontendtutorialController@full_tutorials')->name('full_tutorials');  
+    route::get('/topic-title-{slug}','FrontendtutorialController@full_tutorials_title')->name('full_tutorials_title');
+    route::get('/topic-details-{slug}','FrontendtutorialController@full_tutorials_details')->name('full_tutorials_details');
+    
+});
+
+
 route::get('/your/result','FrontendController@result')->name('result');
 route::get('/exam','FrontendController@exam')->name('exam');
+route::get('/start/exam/{exam_id}','FrontendController@start_exam')->name('start_exam');

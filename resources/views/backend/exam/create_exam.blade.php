@@ -36,7 +36,7 @@
           <div class="card">
             <div class="card-header">
               <h2 class="card-title">Add Exam</h2>
-              <a href="{{ route('exam.list') }}"><h4 class="btn btn-sm btn-success float-right"><i class="fa fa-list">All Exam</i></h4></a>
+              {{-- <a href="{{ route('exam.list') }}"><h4 class="btn btn-sm btn-success float-right"><i class="fa fa-list">All Exam</i></h4></a> --}}
             </div>
             <!-- /.card-header -->
             <div class="card-body">

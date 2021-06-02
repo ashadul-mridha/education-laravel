@@ -49,6 +49,7 @@
                   <th id="exam_end_time">End Time</th>
                   <th id="exam_description">Exam Description</th>
                   <th>Action</th>
+                  <th>Add & View Question</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -62,11 +63,13 @@
                   <td> {{$row->exam_end_time}}</td>
                   <td> {{$row->exam_description}}</td>
                   <td>
-                    {{-- {{route('exam_questions.create')}} --}}
-                    <a href=" {{route('exam_questions.create',$row->id)}} " class="btn btn-sm btn-primary" href=""><i class="far fa-eye"></i>Add Exam Question</a>
-                    <a href="{{ route('exam.view',$row->id)}}" class="btn btn-sm btn-primary" href=""><i class="far fa-eye"></i>View</a>
+                    <a href="{{ route('exam.view',$row->id)}}" class="btn btn-sm btn-primary" href=""><i class="far fa-eye"></i>View Exam Details</a>
                     <a href="{{ route('exam.edit',$row->id)}}" class="btn btn-sm btn-warning" href=""><i class="far fa-edit"></i>Edit</a>
                     <a href="{{ route('exam.delete', $row->id)}}" class="btn btn-sm btn-danger" href=""><i class="fa fa-trash"></i>Delete</a>
+                  </td>
+                  <td>
+                    <a href=" {{route('exam_questions.create',$row->id)}} " class="btn btn-sm btn-primary" href=""><i class="fa fa-plus-circle"></i>Add Exam Question</a> &ThinSpace;
+                    <a href=" {{route('exam_questions.list',$row->id)}} " class="btn btn-sm btn-info" href=""><i class="far fa-eye"></i>View Exam Question List</a>
                   </td>
                 </tr>
                 @endforeach

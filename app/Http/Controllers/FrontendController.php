@@ -8,6 +8,7 @@ use App\Exam;
 use App\ExamResult;
 use App\Subscription;
 use App\Topicstype;
+use App\ExamQuestion;
 use Auth;
 
 class FrontendController extends Controller
@@ -60,9 +61,6 @@ class FrontendController extends Controller
         return view('frontend.subscription');
     }
 
-    public function full_tutorials(){
-        return view('frontend.full_tutorial');
-    }
 
     public function result(){
 
@@ -75,6 +73,24 @@ class FrontendController extends Controller
     }
 
     public function exam(){
-        return view('frontend.exam');
+
+        $exam = Exam::all();
+        return view('frontend.exam',compact('exam'));
+    }
+
+    public function start_exam($exam_id ){
+
+        $exam_ques = ExamQuestion::where('exam_id','=',$exam_id)->orderBy('id','ASC')->get();
+        // dd($exam_ques);
+        return view('frontend.exam_ques',compact('exam_ques'));
+
+    }
+
+    public function next_exam_ques($exam_id ){
+
+        $exam_ques = ExamQuestion::where('exam_id','=',$exam_id)->orderBy('id','ASC')->get();
+        // dd($exam_ques);
+        return view('frontend.exam_ques',compact('exam_ques'));
+
     }
 }

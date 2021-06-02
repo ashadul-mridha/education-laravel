@@ -68,7 +68,7 @@ $route = Route::current()->getName();
                     </a>
                 </li>
             </ul>
-            <ul class="nav nav-treeview">
+            {{-- <ul class="nav nav-treeview">
                 <li class="nav-item">
                     <a href="{{ route('exam_questions.list') }}"
                         class="nav-link {{ $route == 'exam_questions.list' ? 'active' : '' }}">
@@ -76,7 +76,7 @@ $route = Route::current()->getName();
                         <p>Exam Questions List</p>
                     </a>
                 </li>
-            </ul>
+            </ul> --}}
             <ul class="nav nav-treeview">
                 <li class="nav-item">
                     <a href="{{ route('all_exam_result.list') }}"

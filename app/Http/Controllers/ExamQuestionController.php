@@ -46,11 +46,11 @@ class ExamQuestionController extends Controller
 
         Toastr::info('Exam Question Added Successfully', 'Done', ["positionClass" => "toast-top-right"]);
 
-        return redirect()->route('exam_questions.list');
+        return redirect()->route('exam_questions.list',$data->exam_id);
     }
 
-    public function list(){
-        $all_data = ExamQuestion::all();
+    public function list($id){
+        $all_data = ExamQuestion::where('exam_id','=',$id)->get();
         return view('backend.exam_question.list',compact('all_data'));
     }
 
@@ -62,7 +62,8 @@ class ExamQuestionController extends Controller
     public function edit($id){
 
         $all_exam = Exam::all();
-        $data = ExamQuestion::findorfail($id);
+        $data = ExamQuestion::with('exam')->where('id','=',$id)->first();
+        
         return view('backend.exam_question.edit',compact('data','all_exam'));
     }
 
@@ -94,7 +95,7 @@ class ExamQuestionController extends Controller
 
         Toastr::info('Exam Question Update Successfully', 'Done', ["positionClass" => "toast-top-right"]);
 
-        return redirect()->route('exam_questions.list');
+        return redirect()->route('exam_questions.list',$data->exam_id);
     }
 
     public function delete($id){
@@ -103,6 +104,6 @@ class ExamQuestionController extends Controller
 
         Toastr::error('Exam Question Deleted Successfully', 'Done', ["positionClass" => "toast-top-right"]);
 
-        return redirect()->route('exam_questions.list');
+        return redirect()->route('exam_questions.list',$data->exam_id);
     }
 }

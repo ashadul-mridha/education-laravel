@@ -1,6 +1,7 @@
-@extends('frontend.tutorials.tutorials_title')
+@extends('frontend.tutorials.full_topices_title')
 
 @section('topic_details')
+
 
 <div class="row">
     <div class="col-md-12">

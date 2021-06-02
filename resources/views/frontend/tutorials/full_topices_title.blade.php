@@ -168,7 +168,7 @@ a[data-toggle="collapse"] {
                 @foreach ($all_topices as $data)
                         
                       <li class="nav-item ">
-                          <a class="nav-link text-white text-md" href="{{route('tutorials_title',$data->topics_slug)}}">{{$data->topics_type}}</a>
+                          <a class="nav-link text-white text-md" href="{{route('full_tutorials_title',$data->topics_slug)}}">{{$data->topics_type}}</a>
                       </li>
 
                     @endforeach
@@ -193,7 +193,7 @@ a[data-toggle="collapse"] {
         @foreach ($all_title as $title)
 
           <li class="nav-item">
-              <a class="nav-link" href="{{ route('tutorials_details',$title->topices_title_slug )}}">{{ $title->topices_title}}</a>
+              <a class="nav-link" href="{{ route('full_tutorials_details',$title->topices_title_slug )}}">{{ $title->topices_title}}</a>
           </li>
           
         @endforeach

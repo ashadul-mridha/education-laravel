@@ -36,7 +36,7 @@
           <div class="card">
             <div class="card-header">
               <h2 class="card-title">Edit Exam Question</h2>
-              <a href="{{ route('exam_questions.list') }}"><h4 class="btn btn-sm btn-success float-right"><i class="fa fa-list">All Exam Question</i></h4></a>
+              <a href="{{ route('exam_questions.list',$data->exam_id) }}"><h4 class="btn btn-sm btn-success float-right"><i class="fa fa-list">{{$data->exam->exam_title}} Exam Question</i></h4></a>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
