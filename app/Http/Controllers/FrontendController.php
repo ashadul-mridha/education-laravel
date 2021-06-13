@@ -9,7 +9,11 @@ use App\ExamResult;
 use App\Subscription;
 use App\Topicstype;
 use App\ExamQuestion;
+use App\ExamQuestionAnsware;
 use Auth;
+use Toastr;
+use DB;
+use Carbon\Carbon;
 
 class FrontendController extends Controller
 {
@@ -80,17 +84,101 @@ class FrontendController extends Controller
 
     public function start_exam($exam_id ){
 
-        $exam_ques = ExamQuestion::where('exam_id','=',$exam_id)->orderBy('id','ASC')->get();
-        // dd($exam_ques);
-        return view('frontend.exam_ques',compact('exam_ques'));
+        $exam_ques = ExamQuestion::where('exam_id','=',$exam_id)->orderBy('id','ASC')->first();
+        $exam = Exam::findorfail($exam_id);
+        $exam_name = $exam->exam_title;
+
+
+        if ($exam_ques != null) {
+            return view('frontend.exam_ques',compact('exam_ques','exam_name'));
+        }else{
+            Toastr::error('Exam Question Not Added', 'Wait', ["positionClass" => "toast-top-right"]);
+            return back();
+        }
 
     }
 
-    public function next_exam_ques($exam_id ){
 
-        $exam_ques = ExamQuestion::where('exam_id','=',$exam_id)->orderBy('id','ASC')->get();
-        // dd($exam_ques);
-        return view('frontend.exam_ques',compact('exam_ques'));
 
+    public function next_exam_ques(Request $request ){
+
+    
+        $id = $request->id;
+        $exam_id = $request->exam_id;
+        $right_ans = $request->right_answare;
+
+        // $question_answare = ExamQuestion::findorfail($id);
+        // $right_ans = $question_answare->right_answare;
+
+        if ($right_ans == $request->answare) {
+
+            DB::table('exam_question_answare')->insert([
+                'user_id'       => Auth::id(),
+                'question_id'   => $id,
+                'answare_mark'   => 1,
+                'exam_id'       => $exam_id,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ]);
+        }else{
+            DB::table('exam_question_answare')->insert([
+                'user_id'       => Auth::id(),
+                'question_id'   => $id,
+                'answare_mark'  => 0,
+                'exam_id'       => $exam_id,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ]);
+        }
+
+
+
+
+        $exam_ques = ExamQuestion::where('exam_id','=',$exam_id)
+                                ->where('id','>',$id)
+                                ->orderBy('id','ASC')
+                                ->first();
+
+        if ($exam_ques != null) {
+
+                
+            $exam = Exam::findorfail($exam_id);
+            $exam_name = $exam->exam_title;
+            return view('frontend.exam_ques',compact('exam_ques','exam_name'));
+
+        }else{
+
+            $result = ExamQuestionAnsware::where('user_id','=',Auth::id())
+                                        ->where('exam_id','=',$exam_id)
+                                        ->where('created_at', '>',Carbon::now()->subHours(3)->toDateTimeString())
+                                        ->get()
+                                        ->sum('answare_mark');
+                                        // dd(date('Y-m-d'));
+
+        
+            $right = ExamQuestionAnsware::where('user_id','=',Auth::id())
+                                        ->where('exam_id','=',$exam_id)
+                                        ->where('answare_mark','=',1)
+                                        ->where('created_at', '>',Carbon::now()->subHours(3)->toDateTimeString())
+                                        ->get()
+                                        ->sum('answare_mark');
+
+            
+
+            $wrong = ExamQuestionAnsware::where('user_id','=',Auth::id())
+                                        ->where('exam_id','=',$exam_id)
+                                        ->where('answare_mark','=',0)
+                                        ->where('created_at', '>',Carbon::now()->subHours(3)->toDateTimeString())
+                                        ->get();
+
+            $wrong_ans = count($wrong);
+            
+            return view('frontend.exam_ques_result',compact('result','right','wrong_ans'));
+        }
+
+    }
+    public function start_exam_result(){
+
+        return view('frontend.exam_ques_result');
     }
 }

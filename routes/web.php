@@ -233,3 +233,5 @@ Route::prefix('full-tutorials')->group(function () {
 route::get('/your/result','FrontendController@result')->name('result');
 route::get('/exam','FrontendController@exam')->name('exam');
 route::get('/start/exam/{exam_id}','FrontendController@start_exam')->name('start_exam');
+route::post('/start/exam/ques/next','FrontendController@next_exam_ques')->name('next_exam_ques');
+route::post('/start/exam/result','FrontendController@start_exam_result')->name('start_exam_result');

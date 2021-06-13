@@ -19,7 +19,7 @@ class CreateExamQuestionAnswareTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('question_id');
             $table->foreign('question_id')->references('id')->on('exam_questions');
-            $table->string('answare_id');
+            $table->string('answare_mark');
             $table->unsignedBigInteger('exam_id');
             $table->foreign('exam_id')->references('id')->on('exams');
             $table->string('created_by')->nullable();
