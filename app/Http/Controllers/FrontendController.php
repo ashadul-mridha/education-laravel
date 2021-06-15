@@ -153,7 +153,6 @@ class FrontendController extends Controller
                                         ->where('created_at', '>',Carbon::now()->subHours(3)->toDateTimeString())
                                         ->get()
                                         ->sum('answare_mark');
-                                        // dd(date('Y-m-d'));
 
         
             $right = ExamQuestionAnsware::where('user_id','=',Auth::id())

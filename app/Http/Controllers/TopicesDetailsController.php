@@ -15,6 +15,7 @@ class TopicesDetailsController extends Controller
 
         $topices = Topices::all();
         $topices_type = Topicstype::all();
+        
         return view('backend.topic_details.create',compact('topices','topices_type'));
     }
 
