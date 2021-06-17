@@ -76,7 +76,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/result/edit/{id}', 'ExamResultController@edit')->name('exam_result.edit');
         Route::post('/result/update', 'ExamResultController@update')->name('exam_result.update');
         Route::get('/result/delete/{id}', 'ExamResultController@delete')->name('exam_result.delete');
-        
     });
 
 
@@ -98,7 +97,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/details/edit/{id}', 'QuestionDetailsController@edit')->name('pre_ques_de.edit');
         Route::post('/details/update', 'QuestionDetailsController@update')->name('pre_ques_de.update');
         Route::get('/details/delete/{id}', 'QuestionDetailsController@delete')->name('pre_ques_de.delete');
-        
     });
 
     Route::prefix('/profession')->group(function () {
@@ -110,7 +108,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/edit/{id}', 'ProfessionController@edit')->name('profession.edit');
         Route::post('/update', 'ProfessionController@update')->name('profession.update');
         Route::get('/delete/{id}', 'ProfessionController@delete')->name('profession.delete');
-        
     });
 
     Route::prefix('/subscription')->group(function () {
@@ -122,15 +119,15 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/edit/{id}', 'SubscriptionController@edit')->name('subscription.edit');
         Route::post('/update', 'SubscriptionController@update')->name('subscription.update');
         Route::get('/delete/{id}', 'SubscriptionController@delete')->name('subscription.delete');
-        
     });
 
     Route::prefix('/topices')->group(function () {
 
-        
+
         Route::get('/type/create', 'TopicesController@topices_type')->name('topices_type.create');
         Route::post('/type/store', 'TopicesController@topices_type_store')->name('topices_type.store');
         Route::get('/type/list', 'TopicesController@topices_type_list')->name('topices_type.list');
+        Route::get('/get-topics', 'TopicesController@get_topics')->name('topices.get');
 
 
         Route::get('/create', 'TopicesController@create')->name('topices.create');
@@ -148,7 +145,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('details/edit/{id}', 'TopicesDetailsController@edit')->name('top_de.edit');
         Route::post('details/update', 'TopicesDetailsController@update')->name('top_de.update');
         Route::get('details/delete/{id}', 'TopicesDetailsController@delete')->name('top_de.delete');
-        
     });
 
     Route::prefix('/about-us')->group(function () {
@@ -160,10 +156,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/edit/{id}', 'AboutUsController@edit')->name('about_us.edit');
         Route::post('/update', 'AboutUsController@update')->name('about_us.update');
         Route::get('/delete/{id}', 'AboutUsController@delete')->name('about_us.delete');
-        
     });
 
-    Route::prefix('/setting')->group(function(){
+    Route::prefix('/setting')->group(function () {
 
         Route::get('/create', 'BasicInfoSettingController@create')->name('setting.create');
         Route::post('/store', 'BasicInfoSettingController@store')->name('setting.store');
@@ -172,7 +167,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/edit/{id}', 'BasicInfoSettingController@edit')->name('setting.edit');
         Route::post('/update', 'BasicInfoSettingController@update')->name('setting.update');
         Route::get('/delete/{id}', 'BasicInfoSettingController@delete')->name('setting.delete');
-        
     });
 
 
@@ -192,46 +186,45 @@ Route::group(['middleware' => 'auth'], function () {
 //frontend
 
 
-Route::get('/','FrontendController@home')->name('frontend.home');
-Route::get('/login','FrontendController@login_form')->name('login.form');
+Route::get('/', 'FrontendController@home')->name('frontend.home');
+Route::get('/login', 'FrontendController@login_form')->name('login.form');
 
 //sign up controller
-Route::get('/sign-up','SignupController@signup_form')->name('signup.form');
-Route::post('/sign-up','SignupController@register')->name('register');
+Route::get('/sign-up', 'SignupController@signup_form')->name('signup.form');
+Route::post('/sign-up', 'SignupController@register')->name('register');
 
 //menu
-route::get('/exam-result','FrontendController@exam_result')->name('exam_result');
-route::get('/exam-result/{slug}','FrontendController@all_exam_result')->name('single_exam_result');
+route::get('/exam-result', 'FrontendController@exam_result')->name('exam_result');
+route::get('/exam-result/{slug}', 'FrontendController@all_exam_result')->name('single_exam_result');
 
 //free tutorials
 Route::prefix('free-tutorials')->group(function () {
 
-    route::get('/topic','FrontendtutorialController@free_tutorials')->name('free_tutorials');
-    route::get('/topic/title/{slug}','FrontendtutorialController@free_tutorials_title')->name('tutorials_title');
-    route::get('/topic/details/{slug}','FrontendtutorialController@free_tutorials_details')->name('tutorials_details');
-    
+    route::get('/topic', 'FrontendtutorialController@free_tutorials')->name('free_tutorials');
+    route::get('/topic/title/{slug}', 'FrontendtutorialController@free_tutorials_title')->name('tutorials_title');
+    route::get('/topic/details/{slug}', 'FrontendtutorialController@free_tutorials_details')->name('tutorials_details');
 });
 
-route::get('/subscription-package','FrontendController@subscription_package')->name('subscription_package');
-route::get('/contacts','FrontendController@contact')->name('contact');
+route::get('/subscription-package', 'FrontendController@subscription_package')->name('subscription_package');
+route::get('/contacts', 'FrontendController@contact')->name('contact');
 
 
 //user nav frontend
 
 
-route::get('/subscription','FrontendController@subscription')->name('subscription');
+route::get('/subscription', 'FrontendController@subscription')->name('subscription');
 
 //full tutorials
 Route::prefix('full-tutorials')->group(function () {
 
-    
-    route::get('/topic','FrontendtutorialController@full_tutorials')->name('full_tutorials');  
-    route::get('/topic-title-{slug}','FrontendtutorialController@full_tutorials_title')->name('full_tutorials_title');
-    route::get('/topic-details-{slug}','FrontendtutorialController@full_tutorials_details')->name('full_tutorials_details');
-    
+
+    route::get('/topic', 'FrontendtutorialController@full_tutorials')->name('full_tutorials');
+    route::get('/topic-title-{slug}', 'FrontendtutorialController@full_tutorials_title')->name('full_tutorials_title');
+    route::get('/topic-details-{slug}', 'FrontendtutorialController@full_tutorials_details')->name('full_tutorials_details');
 });
 
 
+<<<<<<< HEAD
 route::get('/your/result','FrontendController@result')->name('result');
 route::get('/exam','FrontendController@exam')->name('exam');
 route::get('/start/exam/{exam_id}','FrontendController@start_exam')->name('start_exam');
@@ -244,3 +237,10 @@ route::post('/start/exam/result','FrontendController@start_exam_result')->name('
 route::get('/previous-questions','FrontendController@previous_questions')->name('previous_questions');
 route::get('/previous-questions-details/{id}','FrontendController@previous_questions_details')->name('previous_questions_details');
 
+=======
+route::get('/your/result', 'FrontendController@result')->name('result');
+route::get('/exam', 'FrontendController@exam')->name('exam');
+route::get('/start/exam/{exam_id}', 'FrontendController@start_exam')->name('start_exam');
+route::post('/start/exam/ques/next', 'FrontendController@next_exam_ques')->name('next_exam_ques');
+route::post('/start/exam/result', 'FrontendController@start_exam_result')->name('start_exam_result');
+>>>>>>> 1d04788f64188dd94c07fa6631a5982a9c67a96b
