@@ -10,6 +10,8 @@ use App\Subscription;
 use App\Topicstype;
 use App\ExamQuestion;
 use App\ExamQuestionAnsware;
+use App\PreviousQuestionType;
+use App\QuestionDetails;
 use Auth;
 use Toastr;
 use DB;
@@ -28,7 +30,7 @@ class FrontendController extends Controller
 
 
     public function exam_result(){
-        $exam = Exam::orderBy('exam_start_date','DESC')->get();
+        $exam = Exam::where('exam_start_date','<=',date('Y-m-d'))->orderBy('exam_start_date','DESC')->get();
         return view('frontend.exam_result',compact('exam'));
     }
 
@@ -78,19 +80,24 @@ class FrontendController extends Controller
 
     public function exam(){
 
-        $exam = Exam::all();
+        $today = date('Y-m-d');
+        $exam = Exam::where('exam_start_date','>=',$today)->get();
         return view('frontend.exam',compact('exam'));
     }
 
     public function start_exam($exam_id ){
 
         $exam_ques = ExamQuestion::where('exam_id','=',$exam_id)->orderBy('id','ASC')->first();
+
+        $total_question = ExamQuestion::where('exam_id','=',$exam_id)->orderBy('id','ASC')->get();
+        $total_question = count($total_question);
         $exam = Exam::findorfail($exam_id);
         $exam_name = $exam->exam_title;
+        $num = 1;
 
 
         if ($exam_ques != null) {
-            return view('frontend.exam_ques',compact('exam_ques','exam_name'));
+            return view('frontend.exam_ques',compact('exam_ques','exam_name','total_question','num'));
         }else{
             Toastr::error('Exam Question Not Added', 'Wait', ["positionClass" => "toast-top-right"]);
             return back();
@@ -106,6 +113,7 @@ class FrontendController extends Controller
         $id = $request->id;
         $exam_id = $request->exam_id;
         $right_ans = $request->right_answare;
+        $num = $request->num + 1;
 
         // $question_answare = ExamQuestion::findorfail($id);
         // $right_ans = $question_answare->right_answare;
@@ -144,7 +152,11 @@ class FrontendController extends Controller
                 
             $exam = Exam::findorfail($exam_id);
             $exam_name = $exam->exam_title;
-            return view('frontend.exam_ques',compact('exam_ques','exam_name'));
+
+            $total_question = ExamQuestion::where('exam_id','=',$exam_id)->orderBy('id','ASC')->get();
+            $total_question = count($total_question);
+
+            return view('frontend.exam_ques',compact('exam_ques','exam_name','total_question','num'));
 
         }else{
 
@@ -171,13 +183,39 @@ class FrontendController extends Controller
                                         ->get();
 
             $wrong_ans = count($wrong);
+
+
+            $all_question = ExamQuestion::where('exam_id','=',$exam_id)->orderBy('id','ASC')->get();
             
-            return view('frontend.exam_ques_result',compact('result','right','wrong_ans'));
+            return view('frontend.exam_ques_result',compact('result','right','wrong_ans','all_question'));
         }
 
     }
     public function start_exam_result(){
 
         return view('frontend.exam_ques_result');
+    }
+
+
+    //previous Questions
+
+    public function previous_questions(){
+
+        $ques_list = PreviousQuestionType::all();
+        return view('frontend.previous_questions',compact('ques_list'));
+    }
+
+    public function previous_questions_details($id){
+        
+        $data = QuestionDetails::with('previous_question_type')
+            ->where('question_type_id','=',$id)->orderBY('id','DESC')->first();
+
+        if ($data != null) {
+            return view('frontend.previous_questions_details',compact('data'));
+        }else{
+            Toastr::error('Previous Exam Question Not Added', 'Wait', ["positionClass" => "toast-top-right"]);
+            return back();
+        }
+
     }
 }

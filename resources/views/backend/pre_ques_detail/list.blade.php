@@ -36,7 +36,7 @@
           <div class="card">
             <div class="card-header">
               <h2 class="card-title">Exam Questions Details List</h2>
-              <a href="{{route('pre_ques_de.create')}}"><h4 class="btn btn-sm btn-success float-right"><i class="fa fa-plus-circle">Add Previous Question Details</i></h4></a>
+              <a href="{{route('pre_ques.list')}}"><h4 class="btn btn-sm btn-success float-right"><i class="fa fa-eye">All Previous Question List</i></h4></a>
             </div>
             <!-- /.card-header -->
             <div class="card-body table-responsive">

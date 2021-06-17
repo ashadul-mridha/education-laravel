@@ -27,6 +27,15 @@ $route = Route::current()->getName();
                         </a>
                     </li>
                 </ul>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{ route('add.user') }}"
+                            class="nav-link {{ $route == 'add.user' ? 'active' : '' }}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Add New User</p>
+                        </a>
+                    </li>
+                </ul>
             </li>
         @endif
 
@@ -188,7 +197,7 @@ $route = Route::current()->getName();
                     </a>
                 </li>
             </ul>
-            <ul class="nav nav-treeview">
+            {{-- <ul class="nav nav-treeview">
                 <li class="nav-item">
                     <a href="{{ route('pre_ques_de.list') }}"
                         class="nav-link {{ $route == 'pre_ques_de.list' ? 'active' : '' }}">
@@ -196,7 +205,7 @@ $route = Route::current()->getName();
                         <p>Previous Question Details List</p>
                     </a>
                 </li>
-            </ul>
+            </ul> --}}
         </li>
 
 

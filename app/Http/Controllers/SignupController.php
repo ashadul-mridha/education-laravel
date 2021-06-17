@@ -7,6 +7,7 @@ use App\User;
 use DB;
 Use Hash;
 use Toastr;
+use Carbon\Carbon;
 
 class SignupController extends Controller
 {
@@ -43,6 +44,7 @@ class SignupController extends Controller
         'gender'    => $request->gender,
         'address'     => $request->address,
         'image'      => $image_name,
+        'created_at' => Carbon::now()
     ]);
 
     Toastr::info('Registration Successfull', 'Done', ["positionClass" => "toast-top-right"]);

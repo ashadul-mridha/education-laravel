@@ -3,15 +3,26 @@
 @section('content')
     
 <div class="container">
-        <div class="row mt-5 ml-2">
-            <div class="col-md-12">
-                <h1>{{ $exam_name }} Quiz</h1>
-            </div>
+        <div class="row mt-5 ml-2 justify-content-center">
+            
             <form action="{{route('next_exam_ques')}}" method="post">
                 @csrf
+
                 <div class="row">
                     <div class="col-md-12">
-                        <h3> {{  $exam_ques->question_title}}</h3>
+                        <h1>{{ $exam_name }} Quiz</h1>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3>Question {{$num}} of {{$total_question}}</h3>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4> {{  $exam_ques->question_title}}</h4>
                     </div>
                 </div>
                 <div class="row">
@@ -57,6 +68,7 @@
                 <input type="hidden" name="id" value="{{ $exam_ques->id }}">
                 <input type="hidden" name="exam_id" value="{{ $exam_ques->exam_id }}">
                 <input type="hidden" name="right_answare" value="{{ $exam_ques->right_answare }}">
+                <input type="hidden" name="num" value="{{ $num }}">
             </form>
         </div>
 </div>

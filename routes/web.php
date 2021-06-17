@@ -40,6 +40,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::prefix('/user')->group(function () {
 
+        Route::get('/add','AddUserController@add')->name('add.user');
+        Route::post('/add','AddUserController@store_user')->name('storenew.user');
         Route::get('/list', 'Admin\UserController@all_user')->name('user.view');
         Route::get('/create', 'Admin\UserController@create')->name('user.create');
         Route::post('/store', 'Admin\UserController@store')->name('user.store');
@@ -89,9 +91,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/delete/{id}', 'PreviousQuestionTypeController@delete')->name('pre_ques.delete');
 
         //privious details
-        Route::get('/details/create', 'QuestionDetailsController@create')->name('pre_ques_de.create');
+        Route::get('/details/create/{id}', 'QuestionDetailsController@create')->name('pre_ques_de.create');
         Route::post('/details/store', 'QuestionDetailsController@store')->name('pre_ques_de.store');
-        Route::get('/details/list', 'QuestionDetailsController@list')->name('pre_ques_de.list');
+        Route::get('/details/list/{id}', 'QuestionDetailsController@list')->name('pre_ques_de.list');
         Route::get('/details/view/{id}', 'QuestionDetailsController@view')->name('pre_ques_de.view');
         Route::get('/details/edit/{id}', 'QuestionDetailsController@edit')->name('pre_ques_de.edit');
         Route::post('/details/update', 'QuestionDetailsController@update')->name('pre_ques_de.update');
@@ -235,3 +237,10 @@ route::get('/exam','FrontendController@exam')->name('exam');
 route::get('/start/exam/{exam_id}','FrontendController@start_exam')->name('start_exam');
 route::post('/start/exam/ques/next','FrontendController@next_exam_ques')->name('next_exam_ques');
 route::post('/start/exam/result','FrontendController@start_exam_result')->name('start_exam_result');
+
+
+//previous Questions
+
+route::get('/previous-questions','FrontendController@previous_questions')->name('previous_questions');
+route::get('/previous-questions-details/{id}','FrontendController@previous_questions_details')->name('previous_questions_details');
+

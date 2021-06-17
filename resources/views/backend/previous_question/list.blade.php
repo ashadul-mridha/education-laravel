@@ -46,6 +46,7 @@
                   <th>Question Title</th>
                   <th>Question Year</th>
                   <th>Action</th>
+                  <th>Add or see Details</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -58,6 +59,10 @@
                     <a href="{{ route('pre_ques.view',$row->id)}}" class="btn btn-sm btn-primary" href=""><i class="far fa-eye"></i>View</a>
                     <a href="{{ route('pre_ques.edit',$row->id)}}" class="btn btn-sm btn-warning" href=""><i class="far fa-edit"></i>Edit</a>
                     <a href="{{ route('pre_ques.delete', $row->id)}}" class="btn btn-sm btn-danger" href=""><i class="fa fa-trash"></i>Delete</a>
+                  </td>
+                  <td>
+                    <a href="{{ route('pre_ques_de.create', $row->id)}}" class="btn btn-sm btn-info" href=""><i class="fa fa-plus-circle"></i>Add Description</a>
+                    <a href="{{ route('pre_ques_de.list', $row->id)}}" class="btn btn-sm btn-info" href=""><i class="fa fa-eye"></i>See Description</a>
                   </td>
                 </tr>
                 @endforeach

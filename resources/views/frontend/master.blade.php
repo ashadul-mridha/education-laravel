@@ -122,6 +122,12 @@
 
                       </a>
                       <div class="dropdown-divider"></div>
+                      <a href="{{ route('previous_questions') }}" class="dropdown-item">
+                          <i class="fas fa-lock mr-2"></i>
+                          {{ "Peivious Questions" }}
+
+                      </a>
+                      <div class="dropdown-divider"></div>
                       <a href="{{ route('logout') }}"
                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
                           class="dropdown-item">

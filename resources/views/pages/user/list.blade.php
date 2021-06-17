@@ -36,7 +36,7 @@
           <div class="card">
             <div class="card-header">
               <h2 class="card-title">User List</h2>
-              {{-- <a href="{{route('user.create')}}"><h4 class="btn btn-sm btn-success float-right"><i class="fa fa-plus-circle">Add User</i></h4></a> --}}
+              <a href="{{route('add.user')}}"><h4 class="btn btn-sm btn-success float-right"><i class="fa fa-plus-circle">Add User</i></h4></a>
             </div>
             <!-- /.card-header -->
             <div class="card-body table-responsive">

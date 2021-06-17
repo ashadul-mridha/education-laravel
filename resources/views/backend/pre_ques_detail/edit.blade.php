@@ -36,7 +36,7 @@
           <div class="card">
             <div class="card-header">
               <h2 class="card-title">Edit Previous Question Details</h2>
-              <a href="{{ route('pre_ques_de.list') }}"><h4 class="btn btn-sm btn-success float-right"><i class="fa fa-list">All Previous Question Details</i></h4></a>
+              
             </div>
             <!-- /.card-header -->
             <div class="card-body">

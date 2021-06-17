@@ -10,9 +10,9 @@ use Toastr;
 
 class QuestionDetailsController extends Controller
 {
-    public function create(){
+    public function create($id){
 
-        $data = PreviousQuestionType::all();
+        $data = PreviousQuestionType::where('id','=',$id)->first();
         return view('backend.pre_ques_detail.create',compact('data'));
     }
 
@@ -54,12 +54,14 @@ class QuestionDetailsController extends Controller
 
         Toastr::info(' Question Details Added Successfully', 'Done', ["positionClass" => "toast-top-right"]);
 
-        return redirect()->route('pre_ques_de.list');
+        return redirect()->route('pre_ques_de.list',$data->question_type_id);
     }
 
-    public function list(){
+    public function list($id){
         $all_data = QuestionDetails::with('previous_question_type')
-        ->get();
+                                    ->where('question_type_id','=',$id)
+                                    ->get();
+        // dd($all_data);
         return view('backend.pre_ques_detail.list',compact('all_data'));
     }
 
@@ -134,7 +136,7 @@ class QuestionDetailsController extends Controller
 
         Toastr::info(' Question Details Updated Successfully', 'Done', ["positionClass" => "toast-top-right"]);
 
-        return redirect()->route('pre_ques_de.list');
+        return redirect()->route('pre_ques_de.list',$request->question_type_id);
     }
 
     public function delete($id){
@@ -155,6 +157,6 @@ class QuestionDetailsController extends Controller
 
         Toastr::error(' Question Details Deleted Successfully', 'Done', ["positionClass" => "toast-top-right"]);
 
-        return redirect()->route('pre_ques_de.list');
+        return redirect()->route('pre_ques_de.list',$data->question_type_id);
     }
 }

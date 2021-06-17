@@ -36,7 +36,7 @@
           <div class="card">
             <div class="card-header">
               <h2 class="card-title">Add Previous Question Details</h2>
-              <a href="{{ route('pre_ques_de.list') }}"><h4 class="btn btn-sm btn-success float-right"><i class="fa fa-list">All Previous Question Details</i></h4></a>
+              <a href="{{ route('pre_ques_de.list',$data->id) }}"><h4 class="btn btn-sm btn-success float-right"><i class="fa fa-list">{{$data->question_title}} Previous Question Details</i></h4></a>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -47,9 +47,7 @@
                       <div class="form-group">
                         <label class="text-info">Select Previous Question</label>
                         <select name="question_type_id" class="form-control select2 select2-info" data-dropdown-css-class="select2-info" style="width: 100%;">
-                            @foreach ($data as $row)
-                                <option value="{{$row->id}}">{{$row->question_title}} </option>
-                            @endforeach
+                                <option value="{{$data->id}}">{{$data->question_title}} </option>
                         </select>
                       </div>
                       <!-- /.form-group -->
