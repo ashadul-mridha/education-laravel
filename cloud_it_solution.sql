@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 15, 2021 at 08:25 AM
+-- Generation Time: Oct 27, 2021 at 05:03 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.4.16
 
@@ -141,7 +141,7 @@ CREATE TABLE `exams` (
 --
 
 INSERT INTO `exams` (`id`, `exam_title`, `slug`, `exam_start_date`, `exam_start_time`, `exam_end_time`, `exam_description`, `created_by`, `updated_by`, `deleted_by`, `created_at`, `updated_at`) VALUES
-(14, 'English', 'engvsafdsa', '2021-04-27', '16:50', '18:50', 'English Exam', '1', '1', NULL, '2021-04-26 04:50:47', '2021-04-26 22:24:14'),
+(14, 'English', 'engvsafdsa', '2021-07-30', '16:50', '18:50', 'English Exam', '1', '1', NULL, '2021-04-26 04:50:47', '2021-06-16 06:20:19'),
 (15, 'ICT', 'ictaaa', '2021-04-28', '12:30', '13:30', 'Ict Exam Help On 04/28/2021', '1', NULL, NULL, '2021-04-26 23:21:15', '2021-04-26 23:21:15'),
 (19, 'Bangla', 'bangla43nsdnf', '2021-05-05', '17:56', '18:56', 'yes', '1', NULL, NULL, '2021-05-05 05:56:56', '2021-05-05 05:56:56'),
 (20, 'MAth', 'mathjklasjwe32', '2021-05-10', '18:04', '20:04', 'Bla', '1', NULL, NULL, '2021-05-10 01:05:07', '2021-05-10 01:05:07'),
@@ -207,16 +207,10 @@ CREATE TABLE `exam_question_answare` (
 --
 
 INSERT INTO `exam_question_answare` (`id`, `user_id`, `question_id`, `answare_mark`, `exam_id`, `created_by`, `updated_by`, `deleted_by`, `created_at`, `updated_at`) VALUES
-(85, 13, 1, '1', 15, NULL, NULL, NULL, '2021-06-13 06:36:54', '2021-06-13 06:36:54'),
-(86, 13, 7, '0', 15, NULL, NULL, NULL, '2021-06-13 06:37:02', '2021-06-13 06:37:02'),
-(87, 13, 2, '0', 14, NULL, NULL, NULL, '2021-06-13 06:38:09', '2021-06-13 06:38:09'),
-(88, 13, 4, '1', 14, NULL, NULL, NULL, '2021-06-13 06:38:14', '2021-06-13 06:38:14'),
-(89, 13, 8, '1', 14, NULL, NULL, NULL, '2021-06-13 06:38:17', '2021-06-13 06:38:17'),
-(90, 13, 9, '1', 14, NULL, NULL, NULL, '2021-06-13 06:38:20', '2021-06-13 06:38:20'),
-(91, 13, 2, '1', 14, NULL, NULL, NULL, '2021-06-14 23:08:58', '2021-06-14 23:08:58'),
-(92, 13, 4, '0', 14, NULL, NULL, NULL, '2021-06-14 23:09:07', '2021-06-14 23:09:07'),
-(93, 13, 8, '1', 14, NULL, NULL, NULL, '2021-06-14 23:09:12', '2021-06-14 23:09:12'),
-(94, 13, 9, '1', 14, NULL, NULL, NULL, '2021-06-14 23:09:16', '2021-06-14 23:09:16');
+(132, 13, 2, '0', 14, NULL, NULL, NULL, '2021-06-17 13:07:21', '2021-06-17 13:07:21'),
+(133, 13, 4, '0', 14, NULL, NULL, NULL, '2021-06-17 13:07:25', '2021-06-17 13:07:25'),
+(134, 13, 8, '0', 14, NULL, NULL, NULL, '2021-06-17 13:07:30', '2021-06-17 13:07:30'),
+(135, 13, 9, '1', 14, NULL, NULL, NULL, '2021-06-17 13:07:33', '2021-06-17 13:07:33');
 
 -- --------------------------------------------------------
 
@@ -359,7 +353,7 @@ CREATE TABLE `previous_question_types` (
 
 INSERT INTO `previous_question_types` (`id`, `question_title`, `question_year`, `created_by`, `updated_by`, `deleted_by`, `created_at`, `updated_at`) VALUES
 (2, 'English', '2019-01-01', '1', NULL, NULL, '2021-04-29 03:47:24', '2021-04-29 03:47:24'),
-(3, 'Ict', '2021-05-02', '1', NULL, NULL, '2021-05-01 22:06:49', '2021-05-01 22:06:49');
+(3, 'Ict', '2020-01-12', '1', '1', NULL, '2021-05-01 22:06:49', '2021-06-16 12:12:26');
 
 -- --------------------------------------------------------
 
@@ -414,7 +408,8 @@ CREATE TABLE `question_details` (
 --
 
 INSERT INTO `question_details` (`id`, `question_type_id`, `title`, `descreption`, `file`, `solution_file`, `created_by`, `updated_by`, `deleted_by`, `created_at`, `updated_at`) VALUES
-(3, 2, 'English Exam', 'second Change', '20210502053909.pdf', '20210502053951.pdf', '1', '1', NULL, '2021-05-01 23:39:09', '2021-05-02 06:05:04');
+(3, 2, 'English Exam', '3rdChange', '20210502053909.pdf', '20210502053951.pdf', '1', '1', NULL, '2021-05-01 23:39:09', '2021-06-16 12:27:09'),
+(8, 3, 'Exam Held In Corona Pandamic', 'Hi All See This ict 2020 Questions', '20210616063950.pdf', '20210616063950.pdf', '1', NULL, NULL, '2021-06-16 12:39:50', '2021-06-16 12:39:50');
 
 -- --------------------------------------------------------
 
@@ -603,12 +598,13 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `mobile`, `address`, `gender`, `image`, `userType`, `verify_account`, `role`, `slug`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'Admin', 'admin@gmail.com', NULL, '$2y$10$ZdV0RXAlp9R9YPAZ0/M15.BsyZv74mfu7PaAfRcpF5KOHJPTIMXGm', '01765555445', 'Barishal', 'Male', 'assets/backend/images/profile/kpffdPZRge.jpg', 'admin', 1, 'admin', 'admin', NULL, NULL, '2021-04-24 23:07:09'),
 (2, 'Zerin', 'zerin@gmail.com', NULL, '$2y$10$ZdV0RXAlp9R9YPAZ0/M15.BsyZv74mfu7PaAfRcpF5KOHJPTIMXGm', '0423423', 'Gournodi', 'male', NULL, 'user', 1, 'user', 'user', NULL, NULL, NULL),
-(8, 'zerin', 'zerinmridha@gmail.com', NULL, '$2y$10$jIyPCOMyEfjujsCRQHiUHuQFq008EI7/1QvyPzDJ/wj/SdxFW642.', '01718069307', 'Bottala,Barishal,Bangladesh, Agailjhara,Barishal,Bangladesh', 'women', '20210520074013.jpg', NULL, 0, 'user', NULL, NULL, NULL, NULL),
-(9, 'Ruba', 'ruba@gmail.com', NULL, '$2y$10$inegdB1q.egpnL7zpzKrUuEdtuLpAET0.JNtMnNqsr29arISvUXxK', '13123124', 'Lakharmatia', 'women', '20210520082532.jpg', NULL, 0, 'user', NULL, NULL, NULL, NULL),
+(8, 'zerin', 'zerinmridha@gmail.com', NULL, '$2y$10$jIyPCOMyEfjujsCRQHiUHuQFq008EI7/1QvyPzDJ/wj/SdxFW642.', '01718069307', 'Bottala,Barishal,Bangladesh, Agailjhara,Barishal,Bangladesh', 'women', '20210520074013.jpg', 'user', 0, 'user', NULL, NULL, NULL, NULL),
+(9, 'Ruba', 'ruba@gmail.com', NULL, '$2y$10$inegdB1q.egpnL7zpzKrUuEdtuLpAET0.JNtMnNqsr29arISvUXxK', '13123124', 'Lakharmatia', 'women', '20210520082532.jpg', 'user', 0, 'user', NULL, NULL, NULL, NULL),
 (10, 'Habiba', 'habiba@gmail.com', NULL, '$2y$10$.6s7e9w0qgSUciqFo6aXSuZvyThadz0TSEJZxmgdzfSpMZENKjO1K', '2232', 'Vurgata', 'women', '20210520082822.jpg', NULL, 0, 'user', NULL, NULL, NULL, NULL),
 (11, 'Jisan', 'jisan@gmail.com', NULL, '$2y$10$tE7NPmaMxrUkd9yhMB78keqKE9IKBV.ztMMe.lgvAJramrpiOV8zm', '01613503047', 'Barishal', 'men', '20210520083535.jpg', 'user', 0, 'user', 'user', NULL, NULL, NULL),
 (12, 'abul', 'abul@gmail.com', NULL, '$2y$10$fwILrZOMEgrjk3dno/47ceRXboyPdAxb80WQbIcT0nbIQv/23q6rG', '2342349023', 'torki', 'men', '20210520083653.jpg', 'user', 0, 'user', 'user', NULL, NULL, NULL),
-(13, 'Moti', 'moti@gmail.com', NULL, '$2y$10$1MOEW4yk6.4faH9/2KvqWOo2uj4PQ2LkaiydncZd4zrp4OsFliP.K', '21312312', 'Mridha Bari', 'men', '20210520083956.jpg', 'user', 0, 'user', 'user', NULL, NULL, NULL);
+(13, 'Moti', 'moti@gmail.com', NULL, '$2y$10$1MOEW4yk6.4faH9/2KvqWOo2uj4PQ2LkaiydncZd4zrp4OsFliP.K', '21312312', 'Mridha Bari', 'men', '20210520083956.jpg', 'user', 0, 'user', 'user', NULL, NULL, NULL),
+(16, 'dgfdsg', 'sdfgfsd@gmail.com', NULL, '$2y$10$VRBoiJAjtf9YXf9EDfkjiuQLOtXaUpDB41npm12Bxl8uT1Sh7naMa', '01718069307', 'Bottala,Barishal,Bangladesh', 'women', '20210615100734.png', 'user', 0, 'user', 'user', NULL, '2021-06-15 04:07:34', NULL);
 
 -- --------------------------------------------------------
 
@@ -853,7 +849,7 @@ ALTER TABLE `exam_questions`
 -- AUTO_INCREMENT for table `exam_question_answare`
 --
 ALTER TABLE `exam_question_answare`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=136;
 
 --
 -- AUTO_INCREMENT for table `exam_results`
@@ -895,7 +891,7 @@ ALTER TABLE `professions`
 -- AUTO_INCREMENT for table `question_details`
 --
 ALTER TABLE `question_details`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -937,7 +933,7 @@ ALTER TABLE `topicstypes`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `user_profiles`

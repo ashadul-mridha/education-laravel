@@ -17,7 +17,6 @@ class LoginController extends Controller
         $email = $request->email;
         $password = $request->password;
 
-        // dd(md5($password));
 
         $user = User::where('email',$email)->first();
 

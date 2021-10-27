@@ -224,7 +224,7 @@ Route::prefix('full-tutorials')->group(function () {
 });
 
 
-<<<<<<< HEAD
+
 route::get('/your/result','FrontendController@result')->name('result');
 route::get('/exam','FrontendController@exam')->name('exam');
 route::get('/start/exam/{exam_id}','FrontendController@start_exam')->name('start_exam');
@@ -237,10 +237,9 @@ route::post('/start/exam/result','FrontendController@start_exam_result')->name('
 route::get('/previous-questions','FrontendController@previous_questions')->name('previous_questions');
 route::get('/previous-questions-details/{id}','FrontendController@previous_questions_details')->name('previous_questions_details');
 
-=======
 route::get('/your/result', 'FrontendController@result')->name('result');
 route::get('/exam', 'FrontendController@exam')->name('exam');
 route::get('/start/exam/{exam_id}', 'FrontendController@start_exam')->name('start_exam');
 route::post('/start/exam/ques/next', 'FrontendController@next_exam_ques')->name('next_exam_ques');
 route::post('/start/exam/result', 'FrontendController@start_exam_result')->name('start_exam_result');
->>>>>>> 1d04788f64188dd94c07fa6631a5982a9c67a96b
+
